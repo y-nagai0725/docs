@@ -4,18 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "sass scss/:css/ --watch",
-    "lint": "stylelint \"scss/**/*.scss\" --fix"
+    "watch": "sass assets/scss/style.scss assets/css/style.css --watch",
+    "lint:css": "stylelint 'assets/scss/**/*.scss'",
+    "lint:css:fix": "stylelint 'assets/scss/**/*.scss' --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "sass": "^1.99.0",
-    "stylelint": "^17.11.1",
+    "sass": "^1.100.0",
+    "stylelint": "^17.13.0",
     "stylelint-config-recess-order": "^7.7.0",
     "stylelint-config-standard-scss": "^17.0.0",
-    "stylelint-order": "^8.1.1"
+    "stylelint-order": "^8.1.1",
+    "stylelint-scss": "^7.2.0"
   }
 }
