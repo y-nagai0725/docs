@@ -29,6 +29,7 @@ $color-bg: #f7f7f7;
 $color-text-main: #3e3e3e;
 $color-text-main-light: rgb($color-text-main, 75%);
 $color-text-white: #fff;
+$color-accent: #fce621;
 $color-border: rgb(123 123 123 / 30%);
 
 // =========================================================================
@@ -42,6 +43,7 @@ $box-shadow-card: 0 0 0.4rem 0 rgb(0 0 0 / 15%);
 // =========================================================================
 $z-back: -1;
 $z-default: 1;
+$z-index-header: 100;
 
 // TODO z-index変数は適宜追加する
 
@@ -51,7 +53,7 @@ $z-default: 1;
 
 // ヘッダーの高さ
 $header-height-sp: 6rem;
-$header-height-tab: $header-height-sp;
+$header-height-tab: 7rem;
 $header-height-pc: 9rem;
 
 // =========================================================================
