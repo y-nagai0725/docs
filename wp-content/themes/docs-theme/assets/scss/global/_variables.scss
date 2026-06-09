@@ -11,23 +11,39 @@ $breakpoints: (
   "md": 768px,
   "lg": 1024px,
   "xl": 1280px
-) !default;
+);
 
 // =========================================================================
 // フォント
 // =========================================================================
-
+$font-ja: "Noto Sans JP", sans-serif;
+$font-en: "Roboto", sans-serif;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
 
 // =========================================================================
 // 色
 // =========================================================================
+$color-main: #1bb4d4;
+$color-bg: #f7f7f7;
+$color-text-main: #3e3e3e;
+$color-text-main-light: rgb($color-text-main, 75%);
+$color-text-white: #fff;
+$color-border: rgb(123 123 123 / 30%);
 
+// =========================================================================
+// 影
+// =========================================================================
+$box-shadow-contents: 0 0 1.5rem 0 rgb(102 102 102 / 20%);
+$box-shadow-card: 0 0 0.4rem 0 rgb(0 0 0 / 15%);
 
 // =========================================================================
 // z-index
 // =========================================================================
 $z-back: -1;
 $z-default: 1;
+
+// TODO z-index変数は適宜追加する
 
 // =========================================================================
 // Size & Layout (サイズ・レイアウト関連)
@@ -54,9 +70,6 @@ $transition-base-easing: ease-out;
 // アニメーションの基本時間
 $animation-base-duration: 1s;
 
-// アニメーションの速めの時間（transitionの基本時間と同じ）
-$animation-fast-duration: $transition-base-duration;
-
 // アニメーションの基本easing（transitionの基本easingと同じ）
 $animation-base-easing: $transition-base-easing;
 
@@ -64,5 +77,4 @@ $animation-base-easing: $transition-base-easing;
 // CSS変数（JavaScript連携用など）
 // =========================================================================
 :root {
-
 }

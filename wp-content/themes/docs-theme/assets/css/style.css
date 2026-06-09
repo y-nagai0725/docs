@@ -117,4 +117,11 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  color: #3e3e3e;
+  background-color: #f7f7f7;
+}
+
 /*# sourceMappingURL=style.css.map */

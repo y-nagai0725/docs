@@ -6,10 +6,12 @@
 // =========================================================================
 
 html {
-  // 1remを10pxとして計算しやすくするための設定
   font-size: 62.5%;
 }
 
 body {
-
+  font-family: g.$font-ja;
+  font-weight: g.$font-weight-regular;
+  color: g.$color-text-main;
+  background-color: g.$color-bg;
 }
