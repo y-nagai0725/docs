@@ -1,41 +1,57 @@
-<footer class="l-footer" style="background-color: #1BB4D4; color: #FFFFFF; padding: 4rem 2rem; text-align: center; margin-top: 5rem;">
+<footer class="l-footer">
   <div class="l-footer__inner">
 
-    <!-- 1. フッターロゴ -->
-    <div class="l-footer__logo" style="margin-bottom: 2rem;">
-      <a href="<?php echo esc_url(home_url('/')); ?>" style="color: #FFFFFF; text-decoration: none; font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 2.4rem; font-weight: bold;">
-        Mikanbako Docs
+    <div class="l-footer__logo-wrapper">
+      <a class="l-footer__logo-link" href="<?php echo esc_url(home_url('/')); ?>">
+        <?php echo file_get_contents(get_template_directory() . "/assets/images/logo/site-logo-white.svg") ?>
       </a>
+      <p class="l-footer__message">
+        Web制作技術の定着の為、<br>
+        技術をアウトプット!!
+      </p>
     </div>
 
-    <!-- 2. フッターナビゲーション -->
-    <nav class="l-footer__nav" style="margin-bottom: 2rem;">
-      <ul style="list-style: none; padding: 0; display: flex; justify-content: center; gap: 2rem; font-size: 1.4rem;">
-        <li><a href="<?php echo esc_url(home_url('/')); ?>" style="color: #FFFFFF; text-decoration: none;">ホーム</a></li>
-        <li><a href="#" style="color: #FFFFFF; text-decoration: none;">カテゴリー</a></li>
-        <li><a href="<?php echo esc_url(home_url('/contact/')); ?>" style="color: #FFFFFF; text-decoration: none;">お問い合わせ</a></li>
-        <li><a href="#" style="color: #FFFFFF; text-decoration: none;">GitHub</a></li>
-        <li><a href="#" style="color: #FFFFFF; text-decoration: none;">Portfolio</a></li>
+    <nav class="l-footer__nav">
+      <ul class="l-footer__nav-list">
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
+        </li>
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
+        </li>
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
+        </li>
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
+        </li>
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
+        </li>
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
+        </li>
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link" href="<?php echo esc_url(home_url('/contact/')); ?>" data-text="お問い合わせ">お問い合わせ</a>
+        </li>
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link l-footer__nav-link--en" href="https://github.com/y-nagai0725" target="_blank" data-text="GitHub">GitHub</a>
+        </li>
+        <li class="l-footer__nav-item">
+          <a class="l-footer__nav-link l-footer__nav-link--en" href="https://portfolio.mikanbako.jp/" target="_blank" data-text="Portfolio">Portfolio</a>
+        </li>
       </ul>
     </nav>
 
-    <!-- 3. コピーライト -->
     <div class="l-footer__copyright">
-      <small style="font-size: 1.2rem;">&copy; <?php echo date('Y'); ?> Mikanbako Docs.</small>
-    </div>
-
-    <!-- 4. ページトップへ戻るボタン（後でJSで動かす用） -->
-    <div class="l-footer__pagetop">
-      <a href="#" class="c-pagetop" style="position: fixed; bottom: 2rem; right: 2rem; background-color: #FFFFFF; color: #1BB4D4; width: 4rem; height: 4rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: bold;">
-        ^
-      </a>
+      <small class="l-footer__copyright-text">&copy; <?php echo date('Y'); ?> Mikanbako Docs.</small>
     </div>
 
   </div>
 </footer>
-
-<?php wp_footer(); // 必須：JavaScriptやWordPressのシステムコード（管理バーなど）が出力される場所
-?>
+<button type="button" class="c-pagetop" id="js-pagetop"></button>
+</div>
+<?php wp_footer(); ?>
 </body>
 
 </html>

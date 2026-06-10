@@ -10,7 +10,7 @@
 
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
-
+<div class="l-wrapper">
   <header class="l-header">
     <div class="l-header__inner">
       <h1 class="l-header__logo">

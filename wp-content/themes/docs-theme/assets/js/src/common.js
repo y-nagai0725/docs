@@ -1,7 +1,16 @@
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+// 定数読み込み
+import { GSAP_DEFAULT } from "./constants";
+
 /**
  * 全ページ共通のJavaScript
  */
 document.addEventListener("DOMContentLoaded", () => {
+  // // GSAPプラグインの登録
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
   /**
    * ハンバーガーボタン
@@ -38,6 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
    * @type {HTMLElement | null}
    */
   const categoryWrapper = document.querySelector(".l-header__category-wrapper");
+
+  /**
+   * トップへ戻るボタン
+   * @type {HTMLElement | null}
+   */
+  const pagetopButton = document.querySelector("#js-pagetop");
 
   /**
    * SPナビゲーションメニューを開く
@@ -178,6 +193,44 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
+   * スクロール時処理
+   */
+  const handleScroll = () => {
+    // スクロール量
+    const scrollAmount = window.scrollY;
+
+    // 300px以上スクロールしている時に「トップへ戻るボタン」を表示させる
+    if (scrollAmount >= 300) {
+      pagetopButton?.classList.add("is-active");
+    } else {
+      pagetopButton?.classList.remove("is-active");
+    }
+  };
+
+  /**
+   * スクロールイベントの初期化
+   */
+  const initScrollEvent = () => {
+    window.addEventListener("scroll", handleScroll);
+  };
+
+  /**
+   * トップへ戻るボタンのクリックイベント
+   * ScrollToPluginを使用して滑らかにスクロールさせる
+   */
+  const initBackToTop = () => {
+    pagetopButton?.addEventListener('click', () => {
+      gsap.to(window, {
+        ...GSAP_DEFAULT,
+        scrollTo: {
+          y: 0,
+          autoKill: true, // 途中でユーザーの操作があればスクロール動作を止める
+        },
+      });
+    });
+  };
+
+  /**
    * 全体の初期化処理
    */
   const init = () => {
@@ -187,6 +240,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initSpNavLinks();
     initResizeEvent();
     initSpNavWrapperClick();
+    initScrollEvent();
+    initBackToTop();
   };
 
   init();

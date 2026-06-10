@@ -4,5 +4,148 @@
 // Footer Layout
 // フッター（.l-footer）のスタイル設定
 // =========================================================================
+.l-footer {
+  padding: 6.4rem 0 1.6rem;
+  background-color: g.$color-main;
 
-.l-footer {}
+  @include g.mq(lg) {
+    padding: 8rem 0 1.6rem;
+  }
+
+  &__inner {
+    @include g.contents-width;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+
+    @include g.mq(lg) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.2rem;
+    }
+
+    @include g.mq(lg){
+      padding: 0;
+    }
+  }
+
+  &__logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  &__logo-link {
+    display: block;
+    width: 18.8rem;
+    padding: 1rem 0;
+
+    svg {
+      width: 100%;
+
+      path {
+        fill: g.$color-text-white;
+        transition: fill g.$transition-base-duration g.$transition-base-easing;
+      }
+    }
+
+    @include g.mq(md) {
+      width: 20.5rem;
+    }
+
+    @include g.mq(lg) {
+      width: 27.3rem;
+    }
+
+    @include g.hover {
+      svg {
+        path {
+          fill: g.$color-accent;
+        }
+      }
+    }
+  }
+
+  &__message {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: g.$color-text-white;
+
+    @include g.mq(md) {
+      font-size: 1.3rem;
+    }
+
+    @include g.mq(lg) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__nav-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+
+    @include g.mq(md) {
+      grid-template-columns: repeat(3, 25%);
+    }
+
+    @include g.mq(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__nav-item {
+    @include g.mq(lg) {
+      margin-left: auto;
+    }
+  }
+
+  &__nav-link {
+    position: relative;
+    display: block;
+    width: fit-content;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: g.$font-weight-bold;
+    color: g.$color-text-white;
+
+    &--en {
+      font-family: g.$font-en;
+    }
+
+    &::before {
+      position: absolute;
+      top: 1rem;
+      left: 0;
+      color: g.$color-accent;
+      content: attr(data-text);
+      clip-path: inset(0 100% 0 0);
+      transition: clip-path g.$transition-base-duration g.$transition-base-easing;
+    }
+
+    @include g.mq(lg) {
+      font-size: 1.3rem;
+    }
+
+    @include g.hover {
+      &::before {
+        clip-path: inset(0 0 0 0);
+      }
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+
+    @include g.mq(lg) {
+      grid-column: 2 / 3;
+      text-align: right;
+    }
+  }
+
+  &__copyright-text {
+    font-size: 1.1rem;
+    color: g.$color-text-white;
+  }
+}

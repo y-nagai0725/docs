@@ -129,7 +129,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   display: flex;
   align-items: center;
   width: 100%;
@@ -551,6 +551,203 @@ body {
 @media screen and (width >= 768px) {
   .l-header__sp-nav-link {
     font-size: 1.6rem;
+  }
+}
+
+.l-footer {
+  padding: 6.4rem 0 1.6rem;
+  background-color: #1bb4d4;
+}
+@media screen and (width >= 1024px) {
+  .l-footer {
+    padding: 8rem 0 1.6rem;
+  }
+}
+.l-footer__inner {
+  width: 100%;
+  padding: 0 2rem;
+}
+@media screen and (width >= 768px) {
+  .l-footer__inner {
+    padding: 0 3rem;
+  }
+}
+@media screen and (width >= 1024px) {
+  .l-footer__inner {
+    max-width: 118rem;
+    padding: 0 4rem;
+    margin-inline: auto;
+  }
+}
+.l-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+@media screen and (width >= 1024px) {
+  .l-footer__inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.2rem;
+  }
+}
+@media screen and (width >= 1024px) {
+  .l-footer__inner {
+    padding: 0;
+  }
+}
+.l-footer__logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.l-footer__logo-link {
+  display: block;
+  width: 18.8rem;
+  padding: 1rem 0;
+}
+.l-footer__logo-link svg {
+  width: 100%;
+}
+.l-footer__logo-link svg path {
+  fill: #fff;
+  transition: fill 0.4s ease-out;
+}
+@media screen and (width >= 768px) {
+  .l-footer__logo-link {
+    width: 20.5rem;
+  }
+}
+@media screen and (width >= 1024px) {
+  .l-footer__logo-link {
+    width: 27.3rem;
+  }
+}
+@media (any-hover: hover) {
+  .l-footer__logo-link:hover svg path {
+    fill: #fce621;
+  }
+}
+.l-footer__message {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #fff;
+}
+@media screen and (width >= 768px) {
+  .l-footer__message {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (width >= 1024px) {
+  .l-footer__message {
+    font-size: 1.4rem;
+  }
+}
+.l-footer__nav-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+@media screen and (width >= 768px) {
+  .l-footer__nav-list {
+    grid-template-columns: repeat(3, 25%);
+  }
+}
+@media screen and (width >= 1024px) {
+  .l-footer__nav-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (width >= 1024px) {
+  .l-footer__nav-item {
+    margin-left: auto;
+  }
+}
+.l-footer__nav-link {
+  position: relative;
+  display: block;
+  width: fit-content;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+.l-footer__nav-link--en {
+  font-family: "Roboto", sans-serif;
+}
+.l-footer__nav-link::before {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  color: #fce621;
+  content: attr(data-text);
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.4s ease-out;
+}
+@media screen and (width >= 1024px) {
+  .l-footer__nav-link {
+    font-size: 1.3rem;
+  }
+}
+@media (any-hover: hover) {
+  .l-footer__nav-link:hover::before {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.l-footer__copyright {
+  text-align: center;
+}
+@media screen and (width >= 1024px) {
+  .l-footer__copyright {
+    grid-column: 2/3;
+    text-align: right;
+  }
+}
+.l-footer__copyright-text {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.c-pagetop {
+  position: fixed;
+  right: 1.6rem;
+  bottom: 2.4rem;
+  z-index: 100;
+  width: 4.4rem;
+  aspect-ratio: 1;
+  pointer-events: none;
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(6rem);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, background-color 0.4s ease-out;
+}
+.c-pagetop::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.7rem;
+  aspect-ratio: 1;
+  content: "";
+  border-top: 2px solid #1bb4d4;
+  border-left: 2px solid #1bb4d4;
+  transform: translate(-50%, calc(-50% + 1px)) rotate(45deg);
+}
+.c-pagetop.is-active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0);
+}
+@media screen and (width >= 1024px) {
+  .c-pagetop {
+    right: 2.4rem;
+  }
+}
+@media (any-hover: hover) {
+  .c-pagetop:hover {
+    background-color: #fce621;
   }
 }
 

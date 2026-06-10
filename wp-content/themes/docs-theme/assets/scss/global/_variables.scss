@@ -43,7 +43,8 @@ $box-shadow-card: 0 0 0.4rem 0 rgb(0 0 0 / 15%);
 // =========================================================================
 $z-back: -1;
 $z-default: 1;
-$z-index-header: 100;
+$z-index-pagetop: 100;
+$z-index-header: 200;
 
 // TODO z-index変数は適宜追加する
 
