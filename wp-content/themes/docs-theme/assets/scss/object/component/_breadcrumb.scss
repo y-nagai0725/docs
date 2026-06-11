@@ -1,0 +1,59 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Component: Breadcrumb
+// パンくずリスト（.c-breadcrumb）のスタイル設定
+// =========================================================================
+.c-breadcrumb {
+  padding: 1.6rem 0;
+  background-color: g.$color-text-white;
+
+  &__inner {
+    @include g.contents-width;
+
+    @include g.mq(lg){
+      padding: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__item {
+    display: flex;
+    gap: 1.4rem;
+    align-items: center;
+    font-size: 1.2rem;
+
+    // 2番目以降のアイテムの前に区切り文字をつける
+    &:not(:first-of-type)::before {
+      width: 0.6rem;
+      aspect-ratio: 1;
+      content: "";
+      border-top: 1px solid g.$color-text-main-light;
+      border-right: 1px solid g.$color-text-main-light;
+      transform: rotate(45deg);
+    }
+
+    @include g.mq(md) {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__link {
+    color: g.$color-main;
+    transition: opacity g.$transition-base-duration g.$transition-base-easing;
+
+    @include g.hover {
+      opacity: g.$opacity-hover;
+    }
+  }
+
+  &__current {
+    color: g.$color-text-main;
+  }
+}
