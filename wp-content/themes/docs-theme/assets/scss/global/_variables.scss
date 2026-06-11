@@ -25,6 +25,7 @@ $font-weight-bold: 700;
 // 色
 // =========================================================================
 $color-main: #1bb4d4;
+$color-main-light: rgb($color-main, 10%);
 $color-bg: #f7f7f7;
 $color-text-main: #3e3e3e;
 $color-text-main-light: rgb($color-text-main, 75%);
@@ -56,6 +57,10 @@ $z-index-header: 200;
 $header-height-sp: 6rem;
 $header-height-tab: 7rem;
 $header-height-pc: 9rem;
+
+// 角丸
+$radius-sm: 0.4rem;
+$radius-md: 0.8rem;
 
 // =========================================================================
 // アニメーション

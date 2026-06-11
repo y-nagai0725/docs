@@ -6,4 +6,13 @@
 // =========================================================================
 
 .l-wrapper {
+  margin-top: calc(g.$header-height-sp + 4rem);
+
+  @include g.mq(md){
+    margin-top: calc(g.$header-height-tab + 4rem);
+  }
+
+  @include g.mq(lg){
+    margin-top: calc(g.$header-height-pc + 4rem);
+  }
 }

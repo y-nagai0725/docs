@@ -1,0 +1,88 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Component: Pagination
+// ページネーション（.c-pagination）のスタイル設定
+// =========================================================================
+
+.c-pagination {
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+
+    @include g.mq(md){
+      gap: 1.6rem;
+    }
+  }
+
+  .page-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    aspect-ratio: 1;
+    font-family: g.$font-en;
+    font-size: 1.4rem;
+    color: g.$color-main;
+    background-color: g.$color-text-white;
+    border: 2px solid g.$color-main;
+    border-radius: g.$radius-sm;
+    transition:
+      background-color g.$transition-base-duration g.$transition-base-easing,
+      color g.$transition-base-duration g.$transition-base-easing;
+
+    // ドット（...）のスタイル
+    &.dots {
+      width: 2rem;
+      pointer-events: none;
+      border: none;
+    }
+
+    @include g.hover {
+      color: g.$color-text-white;
+      background-color: g.$color-main;
+    }
+  }
+
+  // 現在のページのスタイル
+  .current {
+    color: g.$color-text-white;
+    pointer-events: none;
+    background-color: g.$color-main;
+  }
+
+  // 「前へ」「次へ」のスタイル
+  .prev,
+  .next {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0.7rem;
+      aspect-ratio: 1;
+      content: "";
+      border-top: 2px solid g.$color-main;
+      transition: border-color g.$transition-base-duration g.$transition-base-easing;
+    }
+
+    @include g.hover {
+      &::before {
+        border-color: g.$color-text-white;
+      }
+    }
+  }
+
+  .prev::before {
+    border-left: 2px solid g.$color-main;
+    transform: translate(calc(-50% + 1px), -50%) rotate(-45deg);
+  }
+
+  .next::before {
+    border-right: 2px solid g.$color-main;
+    transform: translate(calc(-50% - 1px), -50%) rotate(45deg);
+  }
+}

@@ -5,4 +5,18 @@
 // サイドバー（.l-sidebar）のスタイル設定
 // =========================================================================
 
-.l-sidebar {}
+.l-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  @include g.mq(md) {
+    gap: 4.8rem;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  @include g.mq(lg) {
+    gap: 6.4rem;
+  }
+}

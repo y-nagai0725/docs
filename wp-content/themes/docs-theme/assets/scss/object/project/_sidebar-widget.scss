@@ -1,0 +1,110 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: Sidebar Widget
+// サイドバーウィジェット（.p-sidebar-widget）
+// =========================================================================
+.p-sidebar-widget {
+  &__title {
+    padding: 1.6rem;
+    margin-bottom: 2.4rem;
+    font-size: 1.4rem;
+    font-weight: g.$font-weight-bold;
+    color: g.$color-text-white;
+    background-color: g.$color-main;
+
+    &--category {
+      margin-bottom: 0;
+    }
+  }
+
+  &__category-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__category-item {
+    border-bottom: 1px dotted g.$color-border;
+  }
+
+  &__category-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem 4rem 1.6rem 1.6rem;
+    transition: opacity g.$transition-base-duration g.$transition-base-easing;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 0.7rem;
+      aspect-ratio: 1;
+      content: "";
+      border-top: 2px solid g.$color-main;
+      border-right: 2px solid g.$color-main;
+      transform: translate(-0.6rem, -50%) rotate(45deg);
+      transition: transform g.$transition-base-duration g.$transition-base-easing;
+    }
+
+    @include g.hover {
+      opacity: g.$opacity-hover;
+
+      &::after {
+        transform: translate(-0.4rem, -50%) rotate(45deg);
+      }
+    }
+  }
+
+  &__category-name {
+    font-family: g.$font-en;
+    font-size: 1.4rem;
+  }
+
+  &__category-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.6rem;
+    aspect-ratio: 1;
+    font-family: g.$font-en;
+    font-size: 1.4rem;
+    color: g.$color-main;
+    background-color: g.$color-main-light;
+    border-radius: 50%;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  &__tags-wrapper {
+    max-height: 32rem;
+    padding: 1.6rem;
+    overflow-y: scroll;
+    border: 2px solid g.$color-border;
+    border-radius: g.$radius-sm;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+  }
+
+  &__tag-link {
+    display: block;
+    padding: 0.8rem 0;
+    font-size: 1.3rem;
+    font-weight: g.$font-weight-bold;
+    color: g.$color-main;
+    transition: opacity g.$transition-base-duration g.$transition-base-easing;
+
+    @include g.hover {
+      opacity: g.$opacity-hover;
+    }
+  }
+}

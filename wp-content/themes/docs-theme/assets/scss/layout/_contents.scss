@@ -1,0 +1,39 @@
+@use "../global/" as g;
+
+// =========================================================================
+// Layout: Contents
+// メインエリアとサイドバーの2カラムレイアウト（.l-contents）
+// =========================================================================
+.l-contents {
+  @include g.contents-width;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background-color: g.$color-text-white;
+  border-radius: g.$radius-md;
+  box-shadow: g.$box-shadow-contents;
+
+  @include g.mq(lg) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__main {
+    width: 100%;
+
+    @include g.mq(lg) {
+      width: calc(100% - 32rem - 4rem);
+    }
+  }
+
+  &__sidebar {
+    width: 100%;
+
+    @include g.mq(lg) {
+      width: 32rem; // サイドバーの固定幅
+    }
+  }
+}
