@@ -13,24 +13,17 @@
 
     <nav class="l-footer__nav">
       <ul class="l-footer__nav-list">
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
-        </li>
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
-        </li>
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
-        </li>
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
-        </li>
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
-        </li>
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link" href="#" data-text="カテゴリー名">カテゴリー名</a>
-        </li>
+        <?php
+        $categories = get_categories();
+        foreach ($categories as $category) :
+          $cat_name = esc_html($category->name);
+        ?>
+          <li class="l-footer__nav-item">
+            <a class="l-footer__nav-link l-footer__nav-link--en" href="<?php echo esc_url(get_category_link($category->term_id)); ?>" data-text="<?php echo $cat_name; ?>">
+              <?php echo $cat_name; ?>
+            </a>
+          </li>
+        <?php endforeach; ?>
         <li class="l-footer__nav-item">
           <a class="l-footer__nav-link" href="<?php echo esc_url(home_url('/contact/')); ?>" data-text="お問い合わせ">お問い合わせ</a>
         </li>

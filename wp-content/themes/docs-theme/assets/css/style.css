@@ -218,13 +218,13 @@ img {
   width: 100%;
   object-fit: cover;
 }
-.l-header__right-box {
+.l-header__actions {
   display: flex;
   gap: 3rem;
   align-items: center;
 }
 @media screen and (width >= 768px) {
-  .l-header__right-box {
+  .l-header__actions {
     gap: 4rem;
   }
 }
@@ -274,6 +274,7 @@ img {
   position: relative;
   display: block;
   padding: 1em;
+  font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: #fff;
@@ -566,6 +567,9 @@ img {
   font-weight: 700;
   color: #fff;
 }
+.l-header__sp-nav-link--en {
+  font-family: "Roboto", sans-serif;
+}
 @media screen and (width >= 768px) {
   .l-header__sp-nav-link {
     font-size: 1.6rem;
@@ -722,6 +726,7 @@ img {
   }
 }
 .l-footer__copyright-text {
+  font-family: "Roboto", sans-serif;
   font-size: 1.1rem;
   color: #fff;
 }
