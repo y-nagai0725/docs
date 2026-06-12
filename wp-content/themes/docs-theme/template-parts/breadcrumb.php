@@ -32,6 +32,22 @@
         </li>
 
       <?php
+      // カテゴリー一覧ページの場合
+      elseif (is_category()) :
+      ?>
+        <li class="c-breadcrumb__item">
+          <span class="c-breadcrumb__current"><?php single_cat_title(); ?></span>
+        </li>
+
+      <?php
+      // タグ一覧ページの場合
+      elseif (is_tag()) :
+      ?>
+        <li class="c-breadcrumb__item">
+          <span class="c-breadcrumb__current"><?php single_tag_title(); ?></span>
+        </li>
+
+      <?php
       endif;
       ?>
 

@@ -60,6 +60,18 @@ add_action('wp_enqueue_scripts', 'tech_blog_enqueue_scripts');
 // その他の設定・カスタマイズ
 // =========================================================================
 
+/**
+ * アーカイブタイトルの余計な文字（「カテゴリー:」など）を削除
+ */
+add_filter( 'get_the_archive_title', function ($title) {
+  if ( is_category() ) {
+    $title = single_cat_title( '', false );
+  } elseif ( is_tag() ) {
+    $title = single_tag_title( '', false );
+  }
+  return $title;
+});
+
 // Contact Form 7: 自動整形（<p>や<br>の挿入）を無効化
 add_filter('wpcf7_autop_or_not', '__return_false');
 

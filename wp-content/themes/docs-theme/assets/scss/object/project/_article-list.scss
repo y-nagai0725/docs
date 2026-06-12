@@ -10,6 +10,10 @@
   gap: 2.4rem;
   margin-bottom: 4rem;
 
+  &--no-pagination {
+    margin-bottom: 0;
+  }
+
   @include g.mq(md) {
     grid-template-columns: repeat(2, 1fr);
     gap: 3.2rem;
