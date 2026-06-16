@@ -55,7 +55,7 @@
       if ($recent_query->have_posts()) :
         while ($recent_query->have_posts()) : $recent_query->the_post();
 
-          get_template_part('template-parts/card', null, array('modifier' => 'horizontal'));
+          get_template_part('template-parts/card', null, array('modifier' => 'widget'));
 
         endwhile;
         wp_reset_postdata(); // サブループの後は必ずリセットする

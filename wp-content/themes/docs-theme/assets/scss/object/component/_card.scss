@@ -91,9 +91,9 @@
   }
 
   // =========================================================================
-  // Modifier: Horizontal (サイドバー用などの横並びスタイル)
+  // Modifier: widget (サイドバー用などの横並びスタイル)
   // =========================================================================
-  &--horizontal {
+  &--widget {
     background-color: transparent;
     border-radius: 0;
     box-shadow: none; // サイドバーでは影を消す
@@ -121,6 +121,25 @@
     #{$parent}__title {
       font-size: 1.3rem;
       line-height: 1.6;
+    }
+  }
+
+  // =========================================================================
+  // Modifier: in-article（記事内でのカードスタイル用）
+  // =========================================================================
+  &--in-article {
+    @include g.mq(md) {
+      border-radius: g.$radius-sm;
+
+      #{$parent}__link {
+        flex-direction: row;
+        gap: 1.6rem;
+        align-items: center;
+      }
+
+      #{$parent}__thumbnail {
+        width: calc(100% / 3);
+      }
     }
   }
 }

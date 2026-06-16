@@ -13,7 +13,7 @@
   line-height: 1.8;
   color: g.$color-text-main;
 
-  @include g.mq(md){
+  @include g.mq(md) {
     font-size: 1.6rem;
   }
 
@@ -29,11 +29,11 @@
   // -----------------------------------------------------------
   // 段落・テキスト関連
   // -----------------------------------------------------------
-  p {
+  p:not([class]) {
     line-height: 1.8;
   }
 
-  a {
+  a:not([class]) {
     color: g.$color-main;
     text-decoration: underline;
     transition: opacity g.$transition-base-duration g.$transition-base-easing;
@@ -44,21 +44,21 @@
     }
   }
 
-  strong,
-  b {
+  strong:not([class]),
+  b:not([class]) {
     font-weight: g.$font-weight-bold;
   }
 
   // -----------------------------------------------------------
   // リスト関連（ul, ol）
   // -----------------------------------------------------------
-  ul,
-  ol {
+  ul:not([class]),
+  ol:not([class]) {
     line-height: 1.8;
     list-style: none;
   }
 
-  li {
+  li:not([class]) {
     margin-bottom: 0.8rem;
 
     &:last-child {
@@ -69,17 +69,17 @@
   // -----------------------------------------------------------
   // 画像・メディア関連
   // -----------------------------------------------------------
-  img {
+  img:not([class]) {
     max-width: 100%;
     height: auto;
     border-radius: g.$radius-sm;
   }
 
-  figure {
+  figure:not([class]) {
     margin: 0;
   }
 
-  figcaption {
+  figcaption:not([class]) {
     margin-top: 0.8rem;
     font-size: 1.3rem;
     color: g.$color-text-main-light;
@@ -89,7 +89,7 @@
   // -----------------------------------------------------------
   // 引用（Blockquote）
   // -----------------------------------------------------------
-  blockquote {
+  blockquote:not([class]) {
     padding: 1.6rem 2.4rem;
     margin: 3.2rem 0;
     color: g.$color-text-main-light;
@@ -105,16 +105,16 @@
   // 見出し関連（h2, h3, h4）
   // -----------------------------------------------------------
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h2:not([class]),
+  h3:not([class]),
+  h4:not([class]),
+  h5:not([class]),
+  h6:not([class]) {
     margin-top: 4.8rem;
     font-weight: g.$font-weight-bold;
   }
 
-  h2 {
+  h2:not([class]) {
     padding: 1.6rem 2.4rem;
     font-size: 2.2rem;
     color: g.$color-text-white;
@@ -122,14 +122,14 @@
     border-radius: g.$radius-sm;
   }
 
-  h3 {
+  h3:not([class]) {
     padding: 1.2rem 0;
     font-size: 2rem;
     border-top: 4px solid g.$color-main;
     border-bottom: 4px solid g.$color-main;
   }
 
-  h4 {
+  h4:not([class]) {
     padding-left: 1.2rem;
     font-size: 1.8rem;
     border-left: 3px solid g.$color-main;

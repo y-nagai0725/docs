@@ -24,6 +24,8 @@ $font-weight-bold: 700;
 // =========================================================================
 // 色
 // =========================================================================
+
+// ----- サイトカラー -----
 $color-main: #1bb4d4;
 $color-main-light: rgb($color-main, 10%);
 $color-bg: #f7f7f7;
@@ -32,6 +34,29 @@ $color-text-main-light: rgb($color-text-main, 75%);
 $color-text-white: #fff;
 $color-accent: #fce621;
 $color-border: rgb(123 123 123 / 30%);
+$color-code: #c72c4c;
+
+// ----- ブロックスタイル用カラー -----
+$color-warning: #8b4141;
+$color-warning-icon: #a63f3f;
+$color-warning-border: #f9bebe;
+$color-warning-bg: #fee7e7;
+$color-caution: #8b7e41;
+$color-caution-icon: #efc701;
+$color-caution-border: #f9efbe;
+$color-caution-bg: #fefae7;
+$color-correct: #5a8b41;
+$color-correct-icon: #62a63f;
+$color-correct-border: #d2f9be;
+$color-correct-bg: #eefee7;
+$color-note: #8b7241;
+$color-note-icon: #a6843f;
+$color-note-border: #f9e5be;
+$color-note-bg: #fef6e7;
+$color-hint: #41728b;
+$color-hint-icon: #3f84a6;
+$color-hint-border: #bee5f9;
+$color-hint-bg: #e7f6fe;
 
 // =========================================================================
 // 影
