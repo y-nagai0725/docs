@@ -1,9 +1,18 @@
-
 <?php
 // 呼び出し元から 'modifier' という引数が渡されていたらクラス名に追加する処理
-$modifier_class = isset($args['modifier']) ? ' c-card--' . $args['modifier'] : '';
+$modifier_classes = '';
+if (isset($args['modifier'])) {
+  // 配列で渡された場合（複数）と、文字列で渡された場合（単体）の両方に対応
+  if (is_array($args['modifier'])) {
+    foreach ($args['modifier'] as $mod) {
+      $modifier_classes .= ' c-card--' . esc_attr($mod);
+    }
+  } else {
+    $modifier_classes = ' c-card--' . esc_attr($args['modifier']);
+  }
+}
 ?>
-<article class="c-card<?php echo esc_attr($modifier_class); ?>">
+<article class="c-card<?php echo $modifier_classes; ?>">
   <a href="<?php the_permalink(); ?>" class="c-card__link">
 
     <div class="c-card__thumbnail">

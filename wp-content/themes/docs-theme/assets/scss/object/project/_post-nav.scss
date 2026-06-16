@@ -1,0 +1,40 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: Post Navigation
+// 前後の記事へのリンクナビゲーション（.p-post-nav）のスタイル設定
+// =========================================================================
+
+.p-post-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  @include g.mq(md) {
+    flex-direction: row;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    @include g.mq(md) {
+      width: 50%;
+    }
+  }
+
+  &__label {
+    font-family: g.$font-en;
+    font-size: 1.2rem;
+    color: g.$color-text-main-light;
+
+    &--prev {
+      text-align: left;
+    }
+
+    &--next {
+      text-align: right;
+    }
+  }
+}

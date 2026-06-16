@@ -78,22 +78,3 @@
     margin-top: 4rem;
   }
 }
-
-// 前後の記事へのリンクナビゲーション
-.p-post-nav {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 4rem;
-  margin-top: 4rem;
-  border-top: 1px dotted g.$color-border;
-
-  a {
-    font-weight: g.$font-weight-bold;
-    color: g.$color-main;
-    transition: opacity g.$transition-base-duration g.$transition-base-easing;
-
-    @include g.hover {
-      opacity: g.$opacity-hover;
-    }
-  }
-}

@@ -1,0 +1,38 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: Related Articles
+// おススメ（関連）記事（.p-related-articles）のスタイル設定
+// =========================================================================
+.p-related-articles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 2.4rem;
+
+  @include g.mq(md) {
+    gap: 2.4rem;
+  }
+
+  &__title {
+    padding-bottom: 0.8em;
+    font-size: 1.3rem;
+    font-weight: g.$font-weight-bold;
+    border-bottom: 2px solid g.$color-main;
+
+    @include g.mq(md) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.6rem;
+
+    @include g.mq(md) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.4rem;
+    }
+  }
+}
