@@ -47,7 +47,7 @@ function tech_blog_enqueue_scripts()
   wp_enqueue_style(
     'tech-blog-style',
     get_template_directory_uri() . '/assets/css/style.css',
-    array('google-fonts'), // Google Fontsを先に読み込む
+    array('google-fonts','prism-style'), // Google Fonts, prism.css を先に読み込む
     filemtime(get_template_directory() . '/assets/css/style.css') // キャッシュ対策
   );
 
@@ -57,6 +57,23 @@ function tech_blog_enqueue_scripts()
     get_template_directory_uri() . '/assets/js/dist/bundle.js',
     array(),
     filemtime(get_template_directory() . '/assets/js/dist/bundle.js'),
+    true
+  );
+
+  // prism.css
+  wp_enqueue_style(
+    'prism-style',
+    get_template_directory_uri() . '/assets/css/prism.css',
+    array(),
+    filemtime(get_template_directory() . '/assets/css/prism.css')
+  );
+
+  // prism.js
+  wp_enqueue_script(
+    'prism-script',
+    get_template_directory_uri() . '/assets/js/prism.js',
+    array(),
+    filemtime(get_template_directory() . '/assets/js/prism.js'),
     true
   );
 }

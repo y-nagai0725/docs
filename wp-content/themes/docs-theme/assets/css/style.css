@@ -1477,6 +1477,14 @@ img {
 .p-entry-content blockquote:not([class]) p {
   margin-bottom: 0;
 }
+.p-entry-content pre:not([class]),
+.p-entry-content code:not([class]) {
+  display: inline-block;
+  padding: 0.2em 0.3em;
+  margin-inline: 0.3em;
+  color: #c72c4c;
+  background-color: #f7f7f7;
+}
 .p-entry-content h2:not([class]),
 .p-entry-content h3:not([class]),
 .p-entry-content h4:not([class]),
@@ -1707,6 +1715,19 @@ img {
 }
 .p-entry-content .c-font-en {
   font-family: "Roboto", sans-serif;
+}
+
+.p-entry-content pre[class*=language-] {
+  border-radius: 0.4rem;
+}
+.p-entry-content div.code-toolbar > .toolbar {
+  opacity: 1;
+}
+@media (any-hover: hover) {
+  .p-entry-content .toolbar-item > button:hover {
+    color: #fff;
+    background-color: #1bb4d4;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

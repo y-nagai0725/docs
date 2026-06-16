@@ -1,0 +1,32 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: Prism Custom
+// 記事本文（.p-entry-content）内の prism.js コードブロックのカスタム設定
+// =========================================================================
+
+.p-entry-content {
+  // Prism.jsのコードブロック全体の調整
+  pre[class*="language-"] {
+    border-radius: g.$radius-sm;
+  }
+
+  // ツールバー（言語名やコピーボタンが入っているラッパー）
+  div.code-toolbar > .toolbar {
+    opacity: 1;
+  }
+
+  // 言語名のラベル（Show Language）
+  .toolbar-item > span {
+    // 文字色や背景色を調整など
+  }
+
+  // コピーボタン（Copy to Clipboard Button）
+  .toolbar-item > button {
+    // ボタンのホバー時の色や形を調整など
+    @include g.hover {
+      color: g.$color-text-white;
+      background-color: g.$color-main;
+    }
+  }
+}
