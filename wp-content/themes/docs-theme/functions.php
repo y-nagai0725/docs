@@ -229,3 +229,8 @@ function mikanbako_card_shortcode($atts)
 
 // 'card' という名前のショートコードを登録
 add_shortcode('card', 'mikanbako_card_shortcode');
+
+// =========================================================================
+// 各種機能ファイルの読み込み
+// =========================================================================
+require_once get_template_directory() . '/inc/toc.php';

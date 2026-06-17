@@ -38,6 +38,13 @@
               <?php endif; ?>
             </header>
 
+            <?php
+            // ==================================================
+            // 記事内の目次（TOC）を出力する
+            // ==================================================
+            echo get_article_toc();
+            ?>
+
             <div class="p-single__body p-entry-content">
               <?php the_content(); ?>
             </div>
