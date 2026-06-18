@@ -1,0 +1,159 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: Table of Contents (Sidebar)
+// サイドバー追従用の目次（.p-toc-sidebar）のスタイル設定
+// =========================================================================
+
+.p-toc-sidebar {
+  $parent: &;
+
+  display: none;
+
+  @include g.mq(lg) {
+    position: sticky;
+    top: calc(g.$header-height-pc + 2.4rem);
+    display: block;
+    padding: 2.4rem;
+    background-color: g.$color-bg;
+    border-radius: g.$radius-md;
+  }
+
+  // -----------------------------------------------------------
+  // 目次のタイトル部分
+  // -----------------------------------------------------------
+  &__title {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    margin-bottom: 2.4rem;
+    font-size: 1.8rem;
+    font-weight: g.$font-weight-bold;
+
+    &::before {
+      display: inline-block;
+      width: 2.4rem;
+      aspect-ratio: 1;
+      content: "";
+      background-color: g.$color-main;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6h13v2H8V6zm-4 2V6h2v2H4zm4 4h13v2H8v-2zm-4 2v-2h2v2H4zm4 4h13v2H8v-2zm-4 2v-2h2v2H4z'/%3E%3C/svg%3E");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+  }
+
+  // -----------------------------------------------------------
+  // 目次のリスト全体
+  // -----------------------------------------------------------
+  &__list {
+    position: relative;
+    padding-left: 1.6rem; // 縦線と丸のための左スペース
+
+    // タイムラインの縦線♡
+    &::before {
+      position: absolute;
+      top: 0.5rem;
+      bottom: 0.5rem; // 上下を少し内側に入れる
+      left: 0;
+      width: 2px;
+      content: "";
+      background-color: rgba(g.$color-main, 0.2); // 非アクティブな薄い水色
+    }
+  }
+
+  // -----------------------------------------------------------
+  // リストの各アイテム（li）
+  // -----------------------------------------------------------
+  &__item {
+    position: relative;
+    margin-bottom: 1.6rem;
+    line-height: 1.5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    // タイムラインの丸（ドット）の共通設定
+    &::before {
+      position: absolute;
+      top: 0.75em; // テキストの高さの中央あたりに配置
+      left: calc(-1.6rem + 1px); // 縦線の中心に合わせる
+      z-index: g.$z-default; // 縦線より上に表示する
+      content: "";
+      background-color: rgba(g.$color-main, 0.3); // 初期状態は薄い色
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: background-color g.$transition-base-duration g.$transition-base-easing;
+    }
+
+    // ==================================================
+    // h2見出し（大丸）
+    // ==================================================
+    &--h2 {
+      font-size: 1.4rem;
+
+      &::before {
+        width: 1.2rem;
+        aspect-ratio: 1;
+      }
+    }
+
+    // ==================================================
+    // h3見出し（小丸・少しインデント）
+    // ==================================================
+    &--h3 {
+      padding-left: 1.2rem;
+      font-size: 1.3rem;
+      color: g.$color-text-main-light;
+
+      &::before {
+        width: 0.8rem;
+        aspect-ratio: 1;
+      }
+    }
+
+    // ==================================================
+    // h4見出し（丸なし・さらにインデント）
+    // ==================================================
+    &--h4 {
+      padding-left: 2.4rem;
+      font-size: 1.2rem;
+      color: rgba(g.$color-text-main-light, 0.8);
+
+      &::before {
+        display: none; // h4は窮屈になるので丸を消す
+      }
+    }
+
+    // ==================================================
+    // JSで付与する「カレント（現在地）」のスタイル
+    // ==================================================
+    &.is-active {
+      font-weight: g.$font-weight-bold;
+
+      &::before {
+        background-color: g.$color-main; // 丸の色を濃い水色にする
+      }
+
+      #{$parent}__link {
+        color: g.$color-main; // テキストも水色にして目立たせる
+      }
+    }
+  }
+
+  // -----------------------------------------------------------
+  // リンクテキスト（aタグ）
+  // -----------------------------------------------------------
+  &__link {
+    display: inline-block;
+    width: 100%;
+    color: inherit;
+    transition: color g.$transition-base-duration g.$transition-base-easing;
+
+    @include g.hover {
+      color: g.$color-main;
+      text-decoration: underline;
+    }
+  }
+}

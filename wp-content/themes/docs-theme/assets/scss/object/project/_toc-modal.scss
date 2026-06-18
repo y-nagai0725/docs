@@ -1,0 +1,70 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: TOC Modal (モーダル本体)
+// 目次用のモーダル（.p-toc-modal）のスタイル設定
+// =========================================================================
+.p-toc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: g.$z-index-modal;
+  display: flex;
+
+  // 初期状態はGSAPでアニメーションさせるために隠しておく
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 2.4rem;
+  opacity: 0;
+
+  @include g.mq(lg) {
+    display: none; // PC表示時は非表示にする
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(#000, 0.6); // 黒半透明
+    backdrop-filter: blur(5px);
+  }
+
+  &__content {
+    position: relative; // overlay より上に表示するため
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 40rem;
+    max-height: 80vh; // 画面の高さの80%までに制限する
+    background-color: g.$color-bg;
+    border-radius: g.$radius-md;
+    box-shadow: g.$box-shadow-contents;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.6rem 2.4rem;
+    border-bottom: 1px solid g.$color-border;
+  }
+
+  &__title {
+    font-size: 1.6rem;
+    font-weight: g.$font-weight-bold;
+  }
+
+  &__close-button {
+    color: g.$color-text-main-light;
+    transition: color g.$transition-base-duration g.$transition-base-easing;
+
+    @include g.hover {
+      color: g.$color-main;
+    }
+  }
+
+  &__scroll-area {
+    padding: 2.4rem;
+    overflow-y: auto; // 目次が長い時はここでスクロールさせる
+    overscroll-behavior: contain; // モーダルの奥（body）がスクロールするのを防ぐ
+  }
+}

@@ -32,62 +32,70 @@ add_filter('the_content', function ($content) {
 });
 
 /**
- * 目次のHTMLを生成して返す関数（single.phpで呼び出す）
+ * 目次のHTMLを生成して返す関数
+ * $context: 'article' (デフォルト・記事内用) または 'sidebar' (サイドバー用) または 'modal' (sp, tab表示時用)
  */
-function get_article_toc()
+function get_article_toc($context = 'article')
 {
   global $post;
   if (empty($post)) return '';
 
-  // 記事の本文データから、ショートコードタグを取り除く
   $content = strip_shortcodes($post->post_content);
-
-  // 本文から h2, h3, h4 を抽出
   preg_match_all('/<(h[2-4]).*?>(.*?)<\/\1>/i', $content, $matches);
 
-  // 見出しが1つもなければ空を返して目次を生成しない
   if (empty($matches[0])) {
     return '';
   }
 
-  // 目次の一番外側のHTMLを組み立てていく
-  $html = '<div class="p-toc">';
-  $html .= '<div class="p-toc__title">目次</div>';
-  $html .= '<ul class="p-toc__list">';
+  $b_class = 'p-toc'; // デフォルトは記事内（article）
+  if ($context === 'sidebar') {
+    $b_class = 'p-toc-sidebar';
+  } elseif ($context === 'modal') {
+    $b_class = 'p-toc-modal-list';
+  }
+
+  $html = '<div class="' . $b_class . '">';
+  $html .= '<div class="' . $b_class . '__title">目次</div>';
+  $html .= '<ul class="' . $b_class . '__list">';
 
   $counter  = 1;
-  $count_h2 = 0; // h2の連番用
-  $count_h3 = 0; // h3の連番用
-  $count_h4 = 0; // h4の連番用
+  $count_h2 = 0;
+  $count_h3 = 0;
+  $count_h4 = 0;
 
   foreach ($matches[1] as $index => $tag) {
     $text = strip_tags($matches[2][$index]);
     $id = 'index-' . $counter;
     $tag_lower = strtolower($tag);
 
-    // ==================================================
-    // 連番を生成する
-    // ==================================================
     $number_text = '';
     if ($tag_lower === 'h2') {
       $count_h2++;
-      $count_h3 = 0; // h2が出たらh3とh4をリセット
+      $count_h3 = 0;
       $count_h4 = 0;
       $number_text = $count_h2 . '.';
     } elseif ($tag_lower === 'h3') {
       $count_h3++;
-      $count_h4 = 0; // h3が出たらh4をリセット
+      $count_h4 = 0;
       $number_text = $count_h2 . '.' . $count_h3 . '.';
     } elseif ($tag_lower === 'h4') {
       $count_h4++;
       $number_text = $count_h2 . '.' . $count_h3 . '.' . $count_h4 . '.';
     }
 
-    $level_class = 'p-toc__item--' . $tag_lower;
+    $level_class = $b_class . '__item--' . $tag_lower;
 
-    $html .= '<li class="p-toc__item ' . $level_class . '">';
-    $html .= '<a href="#' . $id . '" class="p-toc__link">';
-    $html .= '<span class="p-toc__number">' . $number_text . '</span> ' . $text;
+    $html .= '<li class="' . $b_class . '__item ' . $level_class . '">';
+
+    // カレント表示の付け外しをするために、'js-toc-link' クラスをつけておく
+    $html .= '<a href="#' . $id . '" class="' . $b_class . '__link js-toc-link">';
+
+    // 記事内用（article）の時だけ、連番の数字を出力する
+    if ($context === 'article') {
+      $html .= '<span class="' . $b_class . '__number">' . $number_text . '</span> ';
+    }
+
+    $html .= '<span class="' . $b_class . '__text">' . $text . '</span>';
     $html .= '</a>';
     $html .= '</li>';
 

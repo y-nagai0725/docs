@@ -5,6 +5,9 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 // 定数読み込み
 import { GSAP_DEFAULT } from "./constants";
 
+// 目次機能用
+import { initTocScrollTrigger, initTocModal } from "./toc";
+
 /**
  * 全ページ共通のJavaScript
  */
@@ -139,45 +142,25 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
-   * デバウンス関数（連続して発火するイベントを間引きする）
-   * @param {Function} func - 実行したい関数
-   * @param {number} wait - 待機するミリ秒
-   */
-  const debounce = (func, wait) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        func(...args);
-      }, wait);
-    };
-  };
-
-  /**
-   * ウィンドウリサイズ時の処理
-   */
-  const handleResize = () => {
-    //  CSSのメディアクエリと判定が一致するように、matchMedia を使う
-    if (window.matchMedia("(min-width: 1024px)").matches) {
-
-      // SPメニューが開いていたら閉じる
-      if (spNavWrapper?.classList.contains("is-open")) {
-        closeSpMenu();
-      }
-
-      // SP検索フォームが開いていたら閉じる
-      if (searchWrapper?.classList.contains("is-open")) {
-        closeSpSearchForm();
-      }
-    }
-  };
-
-  /**
    * リサイズイベントの初期化
    */
   const initResizeEvent = () => {
-    // 250ミリ秒（0.25秒）操作が止まったら handleResize を実行する
-    window.addEventListener("resize", debounce(handleResize, 250));
+    const mql = window.matchMedia("(min-width: 1024px)");
+
+    mql.addEventListener("change", (e) => {
+      // 画面幅が1024px以上（PCサイズ）になった瞬間だけ実行
+      if (e.matches) {
+        // SPメニューが開いていたら閉じる
+        if (spNavWrapper?.classList.contains("is-open")) {
+          closeSpMenu();
+        }
+
+        // SP検索フォームが開いていたら閉じる
+        if (searchWrapper?.classList.contains("is-open")) {
+          closeSpSearchForm();
+        }
+      }
+    });
   };
 
   /**
@@ -231,6 +214,46 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
+   * ページ内リンクのスムーススクロール（全画面共通）
+   * ScrollToPluginを使用して滑らかにスクロールさせる
+   */
+  const initSmoothScroll = () => {
+    // hrefが「#」から始まるリンクをすべて取得( href="#" は除外)
+    const anchorLinks = document.querySelectorAll('a[href^="#"]:not([href="#"])');
+
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // ブラウザ標準の動きをキャンセル
+
+        const targetId = link.getAttribute('href');
+
+        // targetIdが存在し、かつ要素が見つかる場合のみ実行
+        if (targetId && targetId !== '#') {
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            // ヘッダーの高さを動的に取得
+            const header = document.querySelector('.l-header');
+            const headerHeight = header ? header.offsetHeight : 0;
+
+            // ヘッダーの高さ + 少しの余白（2.4rem = 24px想定）で止める
+            const offset = headerHeight + 24;
+
+            gsap.to(window, {
+              ...GSAP_DEFAULT,
+              scrollTo: {
+                y: targetElement,
+                offsetY: offset,
+                autoKill: true, // アニメーション中にユーザーがスクロール操作したら止める
+              }
+            });
+          }
+        }
+      });
+    });
+  };
+
+  /**
    * 全体の初期化処理
    */
   const init = () => {
@@ -242,6 +265,9 @@ document.addEventListener("DOMContentLoaded", () => {
     initSpNavWrapperClick();
     initScrollEvent();
     initBackToTop();
+    initSmoothScroll();
+    initTocScrollTrigger();
+    initTocModal();
   };
 
   init();

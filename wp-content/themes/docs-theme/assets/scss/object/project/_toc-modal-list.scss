@@ -1,0 +1,41 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: TOC Modal List
+// モーダル内の目次リスト（.p-toc-modal-list）のスタイル設定
+// =========================================================================
+.p-toc-modal-list {
+  &__item {
+    margin-bottom: 1.6rem;
+    line-height: 1.5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--h2 {
+      font-size: 1.4rem;
+      font-weight: g.$font-weight-bold;
+    }
+
+    &--h3 {
+      padding-left: 1.6rem;
+      font-size: 1.3rem;
+      color: g.$color-text-main-light;
+      border-left: 1px solid g.$color-border; // 左側に細い線を引く
+    }
+
+    &--h4 {
+      padding-left: 3.2rem;
+      font-size: 1.2rem;
+      color: rgba(g.$color-text-main-light, 0.8);
+      border-left: 1px solid g.$color-border;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    width: 100%;
+    color: inherit;
+  }
+}
