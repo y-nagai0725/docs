@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  margin-top: 2.4rem;
 
   @include g.mq(md) {
     gap: 2.4rem;
@@ -16,12 +15,12 @@
 
   &__title {
     padding-bottom: 0.8em;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: g.$font-weight-bold;
     border-bottom: 2px solid g.$color-main;
 
     @include g.mq(md) {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
     }
   }
 

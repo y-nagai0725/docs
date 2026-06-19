@@ -11,6 +11,7 @@ if (isset($args['modifier'])) {
     $modifier_classes = ' c-card--' . esc_attr($args['modifier']);
   }
 }
+$is_widget = preg_match('/--widget/', $modifier_classes);
 ?>
 <article class="c-card<?php echo $modifier_classes; ?>">
   <a href="<?php the_permalink(); ?>" class="c-card__link">
@@ -28,17 +29,19 @@ if (isset($args['modifier'])) {
     </div>
 
     <div class="c-card__body">
-      <div class="c-card__meta">
-        <?php
-        // 記事が属する最初のカテゴリーを取得して表示
-        $category = get_the_category();
-        if (! empty($category)) :
-        ?>
-          <span class="c-card__category"><?php echo esc_html($category[0]->cat_name); ?></span>
-        <?php endif; ?>
+      <?php if (!$is_widget): ?>
+        <div class="c-card__meta">
+          <?php
+          // 記事が属する最初のカテゴリーを取得して表示
+          $category = get_the_category();
+          if (! empty($category)) :
+          ?>
+            <span class="c-card__category"><?php echo esc_html($category[0]->cat_name); ?></span>
+          <?php endif; ?>
 
-        <time class="c-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
-      </div>
+          <time class="c-card__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
+        </div>
+      <?php endif; ?>
 
       <h2 class="c-card__title"><?php the_title(); ?></h2>
 

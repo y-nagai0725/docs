@@ -1,0 +1,106 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: Article Meta
+// 記事ページのメタ情報（.p-article-meta）のスタイル設定
+// =========================================================================
+.p-article-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  padding: 2.4rem;
+  font-size: 1.3rem;
+  background-color: g.$color-bg;
+  border-radius: g.$radius-md;
+
+  &__time-wrapper {
+    display: flex;
+    gap: 2.4rem;
+  }
+
+  &__date {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-family: g.$font-en;
+    color: g.$color-text-main-light;
+
+    &::before {
+      width: 1em;
+      aspect-ratio: 1;
+      content: "";
+      background-color: g.$color-text-main-light;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+    }
+
+    &--post {
+      &::before {
+        mask-image: url("../images/icon/icon-time.svg");
+      }
+    }
+
+    &--modified {
+      &::before {
+        mask-image: url("../images/icon/icon-update.svg");
+      }
+    }
+  }
+
+  &__category-link {
+    display: block;
+    width: fit-content;
+    padding: 0.6em 1em;
+    font-family: g.$font-en;
+    font-weight: g.$font-weight-bold;
+    color: g.$color-main;
+    background-color: g.$color-main-light;
+    border-radius: g.$radius-sm;
+    transition: opacity g.$transition-base-duration g.$transition-base-easing;
+
+    @include g.hover {
+      opacity: g.$opacity-hover;
+    }
+  }
+
+  &__tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__tag {
+    a {
+      display: flex;
+      gap: 0.6em;
+      align-items: center;
+      padding: 0.4em 0.8em;
+      color: g.$color-main;
+      border: 1px solid g.$color-main;
+      border-radius: g.$radius-sm;
+      transition:
+        background-color g.$transition-base-duration g.$transition-base-easing,
+        color g.$transition-base-duration g.$transition-base-easing;
+
+      &::before {
+        width: 1em;
+        aspect-ratio: 1;
+        content: "";
+        background-color: g.$color-main;
+        mask-image: url("../images/icon/icon-tag.svg");
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        transition: background-color g.$transition-base-duration g.$transition-base-easing;
+      }
+
+      @include g.hover {
+        color: g.$color-text-white;
+        background-color: g.$color-main;
+
+        &::before {
+          background-color: g.$color-text-white;
+        }
+      }
+    }
+  }
+}

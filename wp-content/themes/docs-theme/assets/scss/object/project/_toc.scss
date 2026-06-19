@@ -6,11 +6,12 @@
 // =========================================================================
 
 .p-toc {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
   padding: 2.4rem;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
   background-color: g.$color-bg;
-  border: 1px solid g.$color-border;
+  border: 2px solid g.$color-border;
   border-radius: g.$radius-md;
 
   @include g.mq(md) {
@@ -22,22 +23,18 @@
   // -----------------------------------------------------------
   &__title {
     display: flex;
-    gap: 1.2rem;
+    gap: 1.6rem;
     align-items: center;
-    margin-bottom: 2.4rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: g.$font-weight-bold;
 
-    // リストアイコンを擬似要素で描画する
     &::before {
       display: inline-block;
-      width: 2.4rem;
+      width: 2rem;
       aspect-ratio: 1;
       content: "";
       background-color: g.$color-main;
-
-      // 横棒3本とドット3つのリストアイコン（SVG）
-      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 6h13v2H8V6zm-4 2V6h2v2H4zm4 4h13v2H8v-2zm-4 2v-2h2v2H4zm4 4h13v2H8v-2zm-4 2v-2h2v2H4z'/%3E%3C/svg%3E");
+      mask-image: url("../images/icon/icon-toc.svg");
       mask-repeat: no-repeat;
       mask-position: center;
       mask-size: contain;
@@ -45,21 +42,24 @@
   }
 
   // -----------------------------------------------------------
+  // リスト
+  // -----------------------------------------------------------
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  // -----------------------------------------------------------
   // リストの各アイテム（li）
   // -----------------------------------------------------------
   &__item {
-    margin-bottom: 1.2rem;
     line-height: 1.6;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
 
     // ==================================================
     // h2見出しのスタイル（一番大きくて太字）
     // ==================================================
     &--h2 {
-      margin-top: 2rem;
       font-size: 1.5rem;
       font-weight: g.$font-weight-bold;
     }
@@ -70,7 +70,6 @@
     &--h3 {
       padding-left: 2.4rem;
       font-size: 1.4rem;
-      color: g.$color-text-main-light;
     }
 
     // ==================================================
@@ -101,7 +100,6 @@
     transition: opacity g.$transition-base-duration g.$transition-base-easing;
 
     @include g.hover {
-      text-decoration: underline; // ホバーで下線を出す
       opacity: g.$opacity-hover;
     }
   }

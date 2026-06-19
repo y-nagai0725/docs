@@ -13,29 +13,21 @@
           <article id="post-<?php the_ID(); ?>" <?php post_class('p-single'); ?>>
 
             <header class="p-single__header">
-              <div class="p-single__meta">
+              <div class="p-single__thumbnail">
                 <?php
-                $category = get_the_category();
-                if (!empty($category)) {
-                  echo '<span class="p-single__category">' . esc_html($category[0]->cat_name) . '</span>';
+                if (has_post_thumbnail()) {
+                  // アイキャッチ画像が設定されている場合
+                  the_post_thumbnail('large', array('class' => 'p-single__image'));
+                } else {
+                  // 設定されていない場合の「No Image」画像
+                  echo '<img src="' . esc_url(get_template_directory_uri()) . '/assets/images/thumbnail/no-image.png" alt="No Image" class="p-single__image">';
                 }
                 ?>
-                <time class="p-single__date" datetime="<?php echo get_the_date('Y-m-d'); ?>"><?php echo get_the_date('Y.m.d'); ?></time>
               </div>
 
               <h1 class="p-single__title"><?php the_title(); ?></h1>
 
-              <?php if (has_tag()) : ?>
-                <div class="p-single__tags">
-                  <?php the_tags('<span class="p-single__tag">', '</span><span class="p-single__tag">', '</span>'); ?>
-                </div>
-              <?php endif; ?>
-
-              <?php if (has_post_thumbnail()) : ?>
-                <div class="p-single__thumbnail">
-                  <?php the_post_thumbnail('large', array('class' => 'p-single__image')); ?>
-                </div>
-              <?php endif; ?>
+              <?php get_template_part('template-parts/article-meta'); ?>
             </header>
 
             <?php
@@ -48,6 +40,10 @@
             <div class="p-single__body p-entry-content">
               <?php the_content(); ?>
             </div>
+
+            <footer class="p-single__footer">
+              <?php get_template_part('template-parts/article-meta', null, array('type' => 'footer')); ?>
+            </footer>
 
           </article>
 
@@ -115,6 +111,7 @@
           $exclude_ids     = array($current_post_id); // 除外するID（まずは今の記事を除外）
           $related_posts   = array();                   // 取得した記事をストックする
           $max_posts       = 4;                         // 最大表示件数
+          global $post;
 
           // --------------------------------------------------
           // 「同じタグ」を持つ記事をランダムで探す
@@ -180,7 +177,7 @@
           if (! empty($related_posts)) :
           ?>
             <section class="p-related-articles">
-              <h2 class="p-related-articles__title">あわせて読みたい</h2>
+              <h2 class="p-related-articles__title">関連記事</h2>
               <div class="p-related-articles__list">
                 <?php
                 foreach ($related_posts as $post) :

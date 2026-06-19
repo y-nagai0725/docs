@@ -114,10 +114,6 @@
       padding: 0;
     }
 
-    #{$parent}__meta {
-      display: none; // サイドバーではカテゴリーと日付を非表示にする
-    }
-
     #{$parent}__title {
       font-size: 1.3rem;
       line-height: 1.6;
@@ -128,6 +124,8 @@
   // Modifier: in-article（記事内でのカードスタイル用）
   // =========================================================================
   &--in-article {
+    height: auto;
+
     @include g.mq(md) {
       border-radius: g.$radius-sm;
 

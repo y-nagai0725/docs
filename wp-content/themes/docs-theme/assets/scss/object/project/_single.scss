@@ -5,59 +5,21 @@
 // 記事ページ全体（.p-single）のスタイル設定
 // =========================================================================
 .p-single {
-  margin-bottom: 6.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+
+  @include g.mq(md) {
+    gap: 4rem;
+  }
 
   &__header {
-    margin-bottom: 4rem;
-  }
-
-  &__meta {
     display: flex;
+    flex-direction: column;
     gap: 1.6rem;
-    align-items: center;
-    margin-bottom: 1.6rem;
-  }
-
-  &__category {
-    padding: 0.4em 0.8em;
-    font-family: g.$font-en;
-    font-size: 1.2rem;
-    font-weight: g.$font-weight-bold;
-    color: g.$color-main;
-    background-color: g.$color-main-light;
-    border-radius: g.$radius-sm;
-  }
-
-  &__date {
-    font-family: g.$font-en;
-    font-size: 1.3rem;
-    color: g.$color-text-main-light;
-  }
-
-  &__title {
-    margin-bottom: 1.6rem;
-    font-size: 2.4rem;
-    font-weight: g.$font-weight-bold;
-    line-height: 1.5;
 
     @include g.mq(md) {
-      font-size: 3.2rem;
-    }
-  }
-
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-bottom: 2.4rem;
-  }
-
-  &__tag {
-    font-size: 1.2rem;
-    color: g.$color-text-main-light;
-
-    &::before {
-      content: "# ";
+      gap: 2.4rem;
     }
   }
 
@@ -74,7 +36,13 @@
     object-fit: cover;
   }
 
-  &__body {
-    margin-top: 4rem;
+  &__title {
+    font-size: 2.4rem;
+    font-weight: g.$font-weight-bold;
+    line-height: 1.5;
+
+    @include g.mq(md) {
+      font-size: 3.2rem;
+    }
   }
 }
