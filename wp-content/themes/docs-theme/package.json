@@ -4,16 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass assets/scss/style.scss assets/css/style.css --watch",
     "lint:css": "stylelint 'assets/scss/**/*.scss'",
     "lint:css:fix": "stylelint 'assets/scss/**/*.scss' --fix",
-    "js": "vite build --watch"
+    "sass": "sass assets/scss/style.scss assets/css/style.unprefixed.css",
+    "postcss": "postcss assets/css/style.unprefixed.css -u autoprefixer -o assets/css/style.css",
+    "build:css": "npm-run-all -s sass postcss",
+    "watch:sass": "sass assets/scss/style.scss assets/css/style.unprefixed.css --watch",
+    "watch:postcss": "postcss assets/css/style.unprefixed.css -u autoprefixer -o assets/css/style.css --watch",
+    "js": "vite build --watch",
+    "dev": "npm-run-all -p watch:sass watch:postcss js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.15",
+    "postcss-cli": "^11.0.1",
     "sass": "^1.100.0",
     "stylelint": "^17.13.0",
     "stylelint-config-recess-order": "^7.7.0",
