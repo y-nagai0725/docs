@@ -871,20 +871,14 @@ img {
 }
 
 .c-pagetop {
-  position: fixed;
-  right: 1.6rem;
-  bottom: 2.4rem;
-  z-index: 100;
+  position: relative;
   width: 4.4rem;
   aspect-ratio: 1;
-  pointer-events: none;
   cursor: pointer;
   background-color: #fff;
   border-radius: 50%;
   box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  transform: translateY(6rem);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out, background-color 0.4s ease-out;
+  transition: background-color 0.4s ease-out;
 }
 .c-pagetop::before {
   position: absolute;
@@ -896,16 +890,6 @@ img {
   border-top: 2px solid #1bb4d4;
   border-left: 2px solid #1bb4d4;
   transform: translate(-50%, calc(-50% + 1px)) rotate(45deg);
-}
-.c-pagetop.is-active {
-  pointer-events: all;
-  opacity: 1;
-  transform: translateY(0);
-}
-@media screen and (width >= 1024px) {
-  .c-pagetop {
-    right: 2.4rem;
-  }
 }
 @media (any-hover: hover) {
   .c-pagetop:hover {
@@ -1103,10 +1087,6 @@ img {
 }
 
 .c-toc-button {
-  position: fixed;
-  right: 1.6rem;
-  bottom: 8rem;
-  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1114,18 +1094,10 @@ img {
   width: 4.4rem;
   aspect-ratio: 1;
   color: #fff;
-  pointer-events: none;
+  cursor: pointer;
   background-color: #1bb4d4;
   border-radius: 0.4rem;
   box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  transform: translateY(6rem);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-.c-toc-button.is-active {
-  pointer-events: auto;
-  opacity: 1;
-  transform: translateY(0);
 }
 @media screen and (width >= 1024px) {
   .c-toc-button {
@@ -2197,6 +2169,30 @@ img {
   .p-article-meta__tag a:hover::before {
     background-color: #fff;
   }
+}
+
+.p-action-buttons {
+  position: fixed;
+  right: 1.6rem;
+  bottom: 2.4rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(6rem);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+@media screen and (width >= 1024px) {
+  .p-action-buttons {
+    right: 2.4rem;
+  }
+}
+.p-action-buttons.is-active {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /*# sourceMappingURL=style.unprefixed.css.map */

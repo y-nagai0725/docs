@@ -55,7 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
    * トップへ戻るボタン
    * @type {HTMLElement | null}
    */
-  const pagetopButton = document.querySelector("#js-pagetop");
+  const pagetopButton = document.querySelector(".js-pagetop");
+
+  /**
+   * アクションボタンラッパー
+   * @type {HTMLElement | null}
+   */
+  const actionButtons = document.querySelector(".js-action-buttons");
 
   /**
    * SPナビゲーションメニューを開く
@@ -179,14 +185,13 @@ document.addEventListener("DOMContentLoaded", () => {
    * スクロール時処理
    */
   const handleScroll = () => {
-    // スクロール量
     const scrollAmount = window.scrollY;
 
-    // 300px以上スクロールしている時に「トップへ戻るボタン」を表示させる
+    // 300px以上スクロールしている時に「アクションボタン群」を表示させる
     if (scrollAmount >= 300) {
-      pagetopButton?.classList.add("is-active");
+      actionButtons?.classList.add("is-active");
     } else {
-      pagetopButton?.classList.remove("is-active");
+      actionButtons?.classList.remove("is-active");
     }
   };
 

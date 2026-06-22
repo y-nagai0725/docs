@@ -1,0 +1,31 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: Action Buttons
+// 右下に固定されるアクションボタンのラッパー（.p-action-buttons）
+// =========================================================================
+.p-action-buttons {
+  position: fixed;
+  right: 1.6rem;
+  bottom: 2.4rem;
+  z-index: g.$z-index-fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  pointer-events: none; // 非表示時はクリックさせない
+  opacity: 0;
+  transform: translateY(6rem);
+  transition:
+    opacity g.$transition-base-duration g.$transition-base-easing,
+    transform g.$transition-base-duration g.$transition-base-easing;
+
+  @include g.mq(lg) {
+    right: 2.4rem;
+  }
+
+  &.is-active {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

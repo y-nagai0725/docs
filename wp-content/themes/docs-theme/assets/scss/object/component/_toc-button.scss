@@ -5,10 +5,6 @@
 // 目次表示ボタン（.c-toc-button）のスタイル設定
 // =========================================================================
 .c-toc-button {
-  position: fixed;
-  right: 1.6rem;
-  bottom: 8rem;
-  z-index: g.$z-index-fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,21 +12,10 @@
   width: 4.4rem;
   aspect-ratio: 1;
   color: g.$color-text-white;
-  pointer-events: none;
+  cursor: pointer;
   background-color: g.$color-main;
   border-radius: g.$radius-sm;
   box-shadow: g.$box-shadow-card;
-  opacity: 0;
-  transform: translateY(6rem);
-  transition:
-    opacity g.$transition-base-duration g.$transition-base-easing,
-    transform g.$transition-base-duration g.$transition-base-easing;
-
-  &.is-active {
-    pointer-events: auto;
-    opacity: 1;
-    transform: translateY(0);
-  }
 
   @include g.mq(lg) {
     display: none; // PC表示時は非表示にする

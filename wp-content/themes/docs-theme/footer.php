@@ -45,16 +45,10 @@
 
 <?php
 // ==================================================
-// スマホ用：目次を開くフローティングボタン & モーダル本体
-// ※記事ページのみ出力する
+// スマホ用：目次モーダル本体（※記事ページのみ出力）
 // ==================================================
 if (is_single()) :
 ?>
-  <button type="button" class="c-toc-button js-toc-open" aria-label="目次を開く">
-    <span class="c-toc-button__icon"></span>
-    <span class="c-toc-button__text">目次</span>
-  </button>
-
   <div class="p-toc-modal js-toc-modal" aria-hidden="true">
     <div class="p-toc-modal__overlay js-toc-close"></div>
 
@@ -71,7 +65,16 @@ if (is_single()) :
   </div>
 <?php endif; ?>
 
-<button type="button" class="c-pagetop" id="js-pagetop"></button>
+<div class="p-action-buttons js-action-buttons">
+  <?php if (is_single()) : ?>
+    <button type="button" class="c-toc-button js-toc-open" aria-label="目次を開く">
+      <span class="c-toc-button__icon"></span>
+      <span class="c-toc-button__text">目次</span>
+    </button>
+  <?php endif; ?>
+
+  <button type="button" class="c-pagetop js-pagetop" aria-label="トップへ戻る"></button>
+</div>
 
 </div>
 <?php wp_footer(); ?>
