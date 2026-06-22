@@ -15,7 +15,9 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  background-color: rgba(g.$color-text-main, 0.6); // 黒半透明
   opacity: 0;
+  backdrop-filter: blur(5px);
 
   @include g.mq(lg) {
     display: none; // PC表示時は非表示にする
@@ -24,8 +26,6 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(g.$color-text-main, 0.6); // 黒半透明
-    backdrop-filter: blur(5px);
   }
 
   &__content {

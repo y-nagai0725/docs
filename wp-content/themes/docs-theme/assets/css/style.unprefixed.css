@@ -1978,7 +1978,9 @@ img {
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  background-color: rgba(62, 62, 62, 0.6);
   opacity: 0;
+  backdrop-filter: blur(5px);
 }
 @media screen and (width >= 1024px) {
   .p-toc-modal {
@@ -1988,8 +1990,6 @@ img {
 .p-toc-modal__overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(62, 62, 62, 0.6);
-  backdrop-filter: blur(5px);
 }
 .p-toc-modal__content {
   position: relative;
