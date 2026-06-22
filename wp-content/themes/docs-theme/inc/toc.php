@@ -55,7 +55,9 @@ function get_article_toc($context = 'article')
   }
 
   $html = '<div class="' . $b_class . '">';
-  $html .= '<div class="' . $b_class . '__title">目次</div>';
+  if ($context !== 'modal') {
+    $html .= '<div class="' . $b_class . '__title">目次</div>';
+  }
   $html .= '<ul class="' . $b_class . '__list">';
 
   $counter  = 1;

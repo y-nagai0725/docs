@@ -147,7 +147,7 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   display: flex;
   align-items: center;
   width: 100%;
@@ -874,7 +874,7 @@ img {
   position: fixed;
   right: 1.6rem;
   bottom: 2.4rem;
-  z-index: 200;
+  z-index: 100;
   width: 4.4rem;
   aspect-ratio: 1;
   pointer-events: none;
@@ -1106,18 +1106,26 @@ img {
   position: fixed;
   right: 1.6rem;
   bottom: 8rem;
-  z-index: 200;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 5.6rem;
+  width: 4.4rem;
   aspect-ratio: 1;
   color: #fff;
+  pointer-events: none;
   background-color: #1bb4d4;
-  border-radius: 50%;
+  border-radius: 0.4rem;
   box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
-  transition: opacity 0.4s ease-out;
+  opacity: 0;
+  transform: translateY(6rem);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+.c-toc-button.is-active {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
 }
 @media screen and (width >= 1024px) {
   .c-toc-button {
@@ -1125,9 +1133,24 @@ img {
   }
 }
 .c-toc-button__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: block;
+  width: 1.8rem;
+  aspect-ratio: 1;
+}
+.c-toc-button__icon::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  aspect-ratio: 1;
+  content: "";
+  background-color: #fff;
+  mask-image: url("../images/icon/icon-toc.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  transform: translate(-50%, -50%);
 }
 .c-toc-button__text {
   font-size: 1rem;
@@ -1982,7 +2005,7 @@ img {
   visibility: hidden;
   align-items: center;
   justify-content: center;
-  padding: 2.4rem;
+  padding: 2rem;
   opacity: 0;
 }
 @media screen and (width >= 1024px) {
@@ -1993,7 +2016,7 @@ img {
 .p-toc-modal__overlay {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(62, 62, 62, 0.6);
   backdrop-filter: blur(5px);
 }
 .p-toc-modal__content {
@@ -2002,7 +2025,7 @@ img {
   flex-direction: column;
   width: 100%;
   max-width: 40rem;
-  max-height: 80vh;
+  max-height: 80svh;
   background-color: #f7f7f7;
   border-radius: 0.8rem;
   box-shadow: 0 0 1.5rem 0 rgba(102, 102, 102, 0.2);
@@ -2015,30 +2038,60 @@ img {
   border-bottom: 1px solid rgba(123, 123, 123, 0.3);
 }
 .p-toc-modal__title {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
   font-size: 1.6rem;
   font-weight: 700;
 }
-.p-toc-modal__close-button {
-  color: rgba(62, 62, 62, 0.75);
-  transition: color 0.4s ease-out;
+.p-toc-modal__title::before {
+  display: inline-block;
+  width: 2rem;
+  aspect-ratio: 1;
+  content: "";
+  background-color: #1bb4d4;
+  mask-image: url("../images/icon/icon-toc.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
 }
-@media (any-hover: hover) {
-  .p-toc-modal__close-button:hover {
-    color: #1bb4d4;
-  }
+.p-toc-modal__close-button {
+  position: relative;
+  display: block;
+  width: 2.4rem;
+  aspect-ratio: 1;
+}
+.p-toc-modal__close-button::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  aspect-ratio: 1;
+  content: "";
+  background-color: rgba(62, 62, 62, 0.75);
+  mask-image: url("../images/icon/icon-close.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  transform: translate(-50%, -50%);
 }
 .p-toc-modal__scroll-area {
-  padding: 2.4rem;
+  padding: 1.6rem 2.4rem;
   overflow-y: auto;
   overscroll-behavior: contain;
 }
 
+.p-toc-modal-list__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
 .p-toc-modal-list__item {
-  margin-bottom: 1.6rem;
   line-height: 1.5;
 }
-.p-toc-modal-list__item:last-child {
-  margin-bottom: 0;
+.p-toc-modal-list__item.is-active {
+  font-weight: 700;
+  color: #1bb4d4;
 }
 .p-toc-modal-list__item--h2 {
   font-size: 1.4rem;
@@ -2047,13 +2100,12 @@ img {
 .p-toc-modal-list__item--h3 {
   padding-left: 1.6rem;
   font-size: 1.3rem;
-  color: rgba(62, 62, 62, 0.75);
-  border-left: 1px solid rgba(123, 123, 123, 0.3);
+  border-left: 1px solid #1bb4d4;
 }
 .p-toc-modal-list__item--h4 {
   padding-left: 3.2rem;
   font-size: 1.2rem;
-  color: rgba(62, 62, 62, 0.8);
+  color: rgba(62, 62, 62, 0.75);
   border-left: 1px solid rgba(123, 123, 123, 0.3);
 }
 .p-toc-modal-list__link {

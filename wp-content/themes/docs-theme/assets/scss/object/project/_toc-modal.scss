@@ -14,7 +14,7 @@
   visibility: hidden;
   align-items: center;
   justify-content: center;
-  padding: 2.4rem;
+  padding: 2rem;
   opacity: 0;
 
   @include g.mq(lg) {
@@ -24,7 +24,7 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(#000, 0.6); // 黒半透明
+    background-color: rgba(g.$color-text-main, 0.6); // 黒半透明
     backdrop-filter: blur(5px);
   }
 
@@ -34,7 +34,7 @@
     flex-direction: column;
     width: 100%;
     max-width: 40rem;
-    max-height: 80vh; // 画面の高さの80%までに制限する
+    max-height: 80svh; // 画面の高さの80%までに制限する
     background-color: g.$color-bg;
     border-radius: g.$radius-md;
     box-shadow: g.$box-shadow-contents;
@@ -49,21 +49,49 @@
   }
 
   &__title {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
     font-size: 1.6rem;
     font-weight: g.$font-weight-bold;
+
+    &::before {
+      display: inline-block;
+      width: 2rem;
+      aspect-ratio: 1;
+      content: "";
+      background-color: g.$color-main;
+      mask-image: url("../images/icon/icon-toc.svg");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
   }
 
   &__close-button {
-    color: g.$color-text-main-light;
-    transition: color g.$transition-base-duration g.$transition-base-easing;
+    position: relative;
+    display: block;
+    width: 2.4rem;
+    aspect-ratio: 1;
 
-    @include g.hover {
-      color: g.$color-main;
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      aspect-ratio: 1;
+      content: "";
+      background-color: g.$color-text-main-light;
+      mask-image: url("../images/icon/icon-close.svg");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      transform: translate(-50%, -50%);
     }
   }
 
   &__scroll-area {
-    padding: 2.4rem;
+    padding: 1.6rem 2.4rem;
     overflow-y: auto; // 目次が長い時はここでスクロールさせる
     overscroll-behavior: contain; // モーダルの奥（body）がスクロールするのを防ぐ
   }

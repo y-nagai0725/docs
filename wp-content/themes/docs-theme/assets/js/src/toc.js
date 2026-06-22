@@ -125,4 +125,19 @@ export const initTocModal = () => {
       tl.reverse();
     }
   });
+
+  /**
+   * スクロールイベントの初期化
+   */
+  window.addEventListener("scroll", () => {
+    // スクロール量
+    const scrollAmount = window.scrollY;
+
+    // 300px以上スクロールしている時に「目次表示ボタン」を表示させる
+    if (scrollAmount >= 300) {
+      openBtn.classList.add("is-active");
+    } else {
+      openBtn.classList.remove("is-active");
+    }
+  });
 };

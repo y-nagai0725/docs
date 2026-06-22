@@ -7,28 +7,55 @@
 .c-toc-button {
   position: fixed;
   right: 1.6rem;
-  bottom: 8rem; // トップへ戻るボタンと被らないように少し上へ
+  bottom: 8rem;
   z-index: g.$z-index-fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 5.6rem;
+  width: 4.4rem;
   aspect-ratio: 1;
   color: g.$color-text-white;
+  pointer-events: none;
   background-color: g.$color-main;
-  border-radius: 50%;
+  border-radius: g.$radius-sm;
   box-shadow: g.$box-shadow-card;
-  transition: opacity g.$transition-base-duration g.$transition-base-easing;
+  opacity: 0;
+  transform: translateY(6rem);
+  transition:
+    opacity g.$transition-base-duration g.$transition-base-easing,
+    transform g.$transition-base-duration g.$transition-base-easing;
+
+  &.is-active {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @include g.mq(lg) {
     display: none; // PC表示時は非表示にする
   }
 
   &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    display: block;
+    width: 1.8rem;
+    aspect-ratio: 1;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      aspect-ratio: 1;
+      content: "";
+      background-color: g.$color-text-white;
+      mask-image: url("../images/icon/icon-toc.svg");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__text {
