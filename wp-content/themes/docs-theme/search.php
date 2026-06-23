@@ -30,8 +30,8 @@
           ?>
         </div>
       <?php else : ?>
-        <div class="p-search-not-found">
-          <p class="p-search-not-found__text">
+        <div class="p-not-found">
+          <p class="p-not-found__text">
             申し訳ありませんが、検索キーワードに一致する記事は見つかりませんでした。<br>
             よろしければ、こちらの記事も読んでみませんか？
           </p>

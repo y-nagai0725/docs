@@ -1341,20 +1341,20 @@ img {
   }
 }
 
-.p-search-not-found {
+.p-not-found {
   padding: 3.2rem 2.4rem;
   margin-bottom: 4rem;
   text-align: center;
   background-color: rgba(27, 180, 212, 0.1);
   border-radius: 0.8rem;
 }
-.p-search-not-found__text {
+.p-not-found__text {
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.8;
 }
 @media screen and (width >= 768px) {
-  .p-search-not-found__text {
+  .p-not-found__text {
     font-size: 1.5rem;
   }
 }

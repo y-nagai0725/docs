@@ -48,6 +48,14 @@
         </li>
 
       <?php
+      // 404ページの場合
+      elseif (is_404()) :
+      ?>
+        <li class="c-breadcrumb__item">
+          <span class="c-breadcrumb__current">ページが見つかりません</span>
+        </li>
+
+      <?php
       endif;
       ?>
 
