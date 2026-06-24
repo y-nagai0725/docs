@@ -2,10 +2,10 @@
 
 // =========================================================================
 // Project: Prism Custom
-// 記事本文（.p-entry-content）内の prism.js コードブロックのカスタム設定
+// 記事ページ・固定ページ本文（.p-content）内の prism.js コードブロックのカスタム設定
 // =========================================================================
 
-.p-entry-content {
+.p-content {
   // Prism.jsのコードブロック全体の調整
   pre[class*="language-"] {
     border-radius: g.$radius-sm;

@@ -16,7 +16,7 @@ wp.domReady(function () {
 
     // 要素が見つかったら、クラスを追加して終了
     if (editorWrapper) {
-      editorWrapper.classList.add('p-entry-content');
+      editorWrapper.classList.add('p-content');
       clearInterval(checkEditorInterval); // タイマーを止める
     }
 

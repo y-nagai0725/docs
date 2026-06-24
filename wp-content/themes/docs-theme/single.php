@@ -37,7 +37,7 @@
             echo get_article_toc();
             ?>
 
-            <div class="p-single__body p-entry-content">
+            <div class="p-single__body p-content">
               <?php the_content(); ?>
             </div>
 

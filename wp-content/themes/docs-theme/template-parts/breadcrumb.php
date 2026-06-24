@@ -48,6 +48,14 @@
         </li>
 
       <?php
+      // ページの場合
+      elseif (is_page()) :
+      ?>
+        <li class="c-breadcrumb__item">
+          <span class="c-breadcrumb__current"><?php the_title(); ?></span>
+        </li>
+
+      <?php
       // 404ページの場合
       elseif (is_404()) :
       ?>

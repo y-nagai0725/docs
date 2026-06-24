@@ -47,7 +47,7 @@ function tech_blog_enqueue_scripts()
   wp_enqueue_style(
     'tech-blog-style',
     get_template_directory_uri() . '/assets/css/style.css',
-    array('google-fonts','prism-style'), // Google Fonts, prism.css を先に読み込む
+    array('google-fonts', 'prism-style'), // Google Fonts, prism.css を先に読み込む
     filemtime(get_template_directory() . '/assets/css/style.css') // キャッシュ対策
   );
 
@@ -76,6 +76,13 @@ function tech_blog_enqueue_scripts()
     filemtime(get_template_directory() . '/assets/js/prism.js'),
     true
   );
+
+  if (is_page('contact')) {
+    // PHPからJSへデータを渡す（サンクスページのURL等）
+    wp_localize_script('tech-blog-common', 'myGlobalData', array(
+      'thanksUrl' => esc_url(home_url('/thanks/'))
+    ));
+  }
 }
 add_action('wp_enqueue_scripts', 'tech_blog_enqueue_scripts');
 

@@ -5,8 +5,11 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 // 定数読み込み
 import { GSAP_DEFAULT } from "./constants";
 
-// 目次機能用
+// 目次機能用モジュールを読み込み
 import { initTocScrollTrigger, initTocModal } from "./toc";
+
+// お問い合わせフォーム用モジュールを読み込み
+import { initContactForm } from "./contact";
 
 /**
  * 全ページ共通のJavaScript
@@ -273,6 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initSmoothScroll();
     initTocScrollTrigger();
     initTocModal();
+    initContactForm();
   };
 
   init();
