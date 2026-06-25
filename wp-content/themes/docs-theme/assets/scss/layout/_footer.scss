@@ -25,7 +25,7 @@
       gap: 3.2rem;
     }
 
-    @include g.mq(lg){
+    @include g.mq(xl) {
       padding: 0;
     }
   }
@@ -81,23 +81,55 @@
     }
   }
 
-  &__nav-list {
+  &__nav {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.8rem;
+    grid-template-columns: 1fr;
+    gap: 4rem;
 
     @include g.mq(md) {
-      grid-template-columns: repeat(3, 25%);
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3.2rem;
     }
 
     @include g.mq(lg) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: auto auto auto;
+      gap: 6.4rem;
+      justify-content: flex-end;
     }
   }
 
-  &__nav-item {
-    @include g.mq(lg) {
-      margin-left: auto;
+  &__nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  &__nav-heading {
+    padding-bottom: 0.8rem;
+    font-family: g.$font-en;
+    font-size: 1.4rem;
+    font-weight: g.$font-weight-bold;
+    color: g.$color-accent;
+    border-bottom: 1px solid rgba(g.$color-text-white, 0.3);
+
+    @include g.mq(md) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    &--category {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem 2.4rem;
+
+      @include g.mq(md) {
+        gap: 1.2rem 4rem;
+      }
     }
   }
 
@@ -105,7 +137,7 @@
     position: relative;
     display: block;
     width: fit-content;
-    padding: 1rem 0;
+    padding: 0.4rem 0;
     font-size: 1.2rem;
     font-weight: g.$font-weight-bold;
     color: g.$color-text-white;
@@ -116,7 +148,7 @@
 
     &::before {
       position: absolute;
-      top: 1rem;
+      top: 0.4rem;
       left: 0;
       color: g.$color-accent;
       content: attr(data-text);

@@ -12,28 +12,48 @@
     </div>
 
     <nav class="l-footer__nav">
-      <ul class="l-footer__nav-list">
-        <?php
-        $categories = get_categories();
-        foreach ($categories as $category) :
-          $cat_name = esc_html($category->name);
-        ?>
+
+      <div class="l-footer__nav-group">
+        <p class="l-footer__nav-heading">Category</p>
+        <ul class="l-footer__nav-list l-footer__nav-list--category">
+          <?php
+          $categories = get_categories();
+          foreach ($categories as $category) :
+            $cat_name = esc_html($category->name);
+          ?>
+            <li class="l-footer__nav-item">
+              <a class="l-footer__nav-link l-footer__nav-link--en" href="<?php echo esc_url(get_category_link($category->term_id)); ?>" data-text="<?php echo $cat_name; ?>">
+                <?php echo $cat_name; ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+
+      <div class="l-footer__nav-group">
+        <p class="l-footer__nav-heading">About</p>
+        <ul class="l-footer__nav-list">
           <li class="l-footer__nav-item">
-            <a class="l-footer__nav-link l-footer__nav-link--en" href="<?php echo esc_url(get_category_link($category->term_id)); ?>" data-text="<?php echo $cat_name; ?>">
-              <?php echo $cat_name; ?>
-            </a>
+            <a class="l-footer__nav-link" href="<?php echo esc_url(home_url('/contact/')); ?>" data-text="お問い合わせ">お問い合わせ</a>
           </li>
-        <?php endforeach; ?>
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link" href="<?php echo esc_url(home_url('/contact/')); ?>" data-text="お問い合わせ">お問い合わせ</a>
-        </li>
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link l-footer__nav-link--en" href="https://github.com/y-nagai0725" target="_blank" data-text="GitHub">GitHub</a>
-        </li>
-        <li class="l-footer__nav-item">
-          <a class="l-footer__nav-link l-footer__nav-link--en" href="https://portfolio.mikanbako.jp/" target="_blank" data-text="Portfolio">Portfolio</a>
-        </li>
-      </ul>
+          <li class="l-footer__nav-item">
+            <a class="l-footer__nav-link l-footer__nav-link--en" href="<?php echo esc_url(home_url('/privacy-policy/')); ?>" data-text="Privacy Policy">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="l-footer__nav-group">
+        <p class="l-footer__nav-heading">Link</p>
+        <ul class="l-footer__nav-list">
+          <li class="l-footer__nav-item">
+            <a class="l-footer__nav-link l-footer__nav-link--en" href="https://github.com/y-nagai0725" target="_blank" data-text="GitHub">GitHub</a>
+          </li>
+          <li class="l-footer__nav-item">
+            <a class="l-footer__nav-link l-footer__nav-link--en" href="https://portfolio.mikanbako.jp/" target="_blank" data-text="Portfolio">Portfolio</a>
+          </li>
+        </ul>
+      </div>
+
     </nav>
 
     <div class="l-footer__copyright">

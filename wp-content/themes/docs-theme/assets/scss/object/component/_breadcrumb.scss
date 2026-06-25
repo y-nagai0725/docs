@@ -11,7 +11,7 @@
   &__inner {
     @include g.contents-width;
 
-    @include g.mq(lg){
+    @include g.mq(xl){
       padding: 0;
     }
   }

@@ -617,7 +617,7 @@ img {
     gap: 3.2rem;
   }
 }
-@media screen and (width >= 1024px) {
+@media screen and (width >= 1280px) {
   .l-footer__inner {
     padding: 0;
   }
@@ -669,31 +669,62 @@ img {
     font-size: 1.4rem;
   }
 }
-.l-footer__nav-list {
+.l-footer__nav {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.8rem;
+  grid-template-columns: 1fr;
+  gap: 4rem;
 }
 @media screen and (width >= 768px) {
-  .l-footer__nav-list {
-    grid-template-columns: repeat(3, 25%);
+  .l-footer__nav {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3.2rem;
   }
 }
 @media screen and (width >= 1024px) {
-  .l-footer__nav-list {
-    grid-template-columns: repeat(3, 1fr);
+  .l-footer__nav {
+    grid-template-columns: auto auto auto;
+    gap: 6.4rem;
+    justify-content: flex-end;
   }
 }
-@media screen and (width >= 1024px) {
-  .l-footer__nav-item {
-    margin-left: auto;
+.l-footer__nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+.l-footer__nav-heading {
+  padding-bottom: 0.8rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fce621;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+@media screen and (width >= 768px) {
+  .l-footer__nav-heading {
+    font-size: 1.6rem;
+  }
+}
+.l-footer__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.l-footer__nav-list--category {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem 2.4rem;
+}
+@media screen and (width >= 768px) {
+  .l-footer__nav-list--category {
+    gap: 1.2rem 4rem;
   }
 }
 .l-footer__nav-link {
   position: relative;
   display: block;
   width: fit-content;
-  padding: 1rem 0;
+  padding: 0.4rem 0;
   font-size: 1.2rem;
   font-weight: 700;
   color: #fff;
@@ -703,7 +734,7 @@ img {
 }
 .l-footer__nav-link::before {
   position: absolute;
-  top: 1rem;
+  top: 0.4rem;
   left: 0;
   color: #fce621;
   content: attr(data-text);
@@ -831,7 +862,7 @@ img {
     margin-inline: auto;
   }
 }
-@media screen and (width >= 1024px) {
+@media screen and (width >= 1280px) {
   .c-breadcrumb__inner {
     padding: 0;
   }
