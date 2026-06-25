@@ -131,6 +131,7 @@ img {
 
 .l-wrapper {
   padding-top: 6rem;
+  animation: page-fade-in 0.8s ease-out forwards;
 }
 @media screen and (width >= 768px) {
   .l-wrapper {
@@ -143,6 +144,14 @@ img {
   }
 }
 
+@keyframes page-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .l-header {
   position: fixed;
   top: 0;

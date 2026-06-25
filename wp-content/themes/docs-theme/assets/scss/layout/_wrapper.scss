@@ -7,6 +7,7 @@
 
 .l-wrapper {
   padding-top: g.$header-height-sp;
+  animation: page-fade-in g.$animation-base-duration g.$animation-base-easing forwards;
 
   @include g.mq(md) {
     padding-top: g.$header-height-tab;
@@ -14,5 +15,18 @@
 
   @include g.mq(lg) {
     padding-top: g.$header-height-pc;
+  }
+}
+
+// =========================================================================
+// Keyframes: ページ全体のフェードイン
+// =========================================================================
+@keyframes page-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

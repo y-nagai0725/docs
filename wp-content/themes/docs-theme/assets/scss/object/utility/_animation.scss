@@ -6,8 +6,8 @@
 // =========================================================================
 
 // アニメーションの時間と動き方（イージング）のベース設定
-$anim-duration: 0.8s;
-$anim-easing: g.$transition-base-easing;
+$anim-duration: g.$animation-base-duration;
+$anim-easing: g.$animation-base-easing;
 
 // -----------------------------------------------------------
 // フェードイン（その場でフワッ）
