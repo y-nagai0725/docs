@@ -2471,5 +2471,52 @@ form.spam .wpcf7-response-output {
     transform: translate(calc(-100% - 1.6rem), -50%) rotate(360deg);
   }
 }
+.u-fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+.u-fade-in.is-active {
+  opacity: 1;
+}
+
+.u-fade-in-up {
+  opacity: 0;
+  transform: translateY(3rem);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.u-fade-in-up.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.u-fade-in-down {
+  opacity: 0;
+  transform: translateY(-3rem);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.u-fade-in-down.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.u-fade-in-left {
+  opacity: 0;
+  transform: translateX(3rem);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.u-fade-in-left.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.u-fade-in-right {
+  opacity: 0;
+  transform: translateX(-3rem);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.u-fade-in-right.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 /*# sourceMappingURL=style.unprefixed.css.map */

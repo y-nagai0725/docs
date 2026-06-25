@@ -262,6 +262,26 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /**
+   * 汎用スクロールアニメーション（.js-scroll要素に .is-active を付与）
+   */
+  const initScrollAnimation = () => {
+    // ページ内のすべての .js-scroll を取得
+    const scrollElements = document.querySelectorAll('.js-scroll');
+
+    // 要素が存在しないページでは処理を終了
+    if (scrollElements.length === 0) return;
+
+    scrollElements.forEach((el) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 75%",
+        toggleClass: "is-active",
+        once: true
+      });
+    });
+  };
+
+  /**
    * 全体の初期化処理
    */
   const init = () => {
@@ -277,6 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initTocScrollTrigger();
     initTocModal();
     initContactForm();
+    initScrollAnimation();
   };
 
   init();

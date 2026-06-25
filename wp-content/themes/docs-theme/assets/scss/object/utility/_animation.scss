@@ -1,0 +1,86 @@
+@use "../../global/" as g;
+
+// =========================================================================
+// Project: Animation Utility
+// スクロール連動などの汎用アニメーション（.u-fade-in系）
+// =========================================================================
+
+// アニメーションの時間と動き方（イージング）のベース設定
+$anim-duration: 0.8s;
+$anim-easing: g.$transition-base-easing;
+
+// -----------------------------------------------------------
+// フェードイン（その場でフワッ）
+// -----------------------------------------------------------
+.u-fade-in {
+  opacity: 0;
+  transition: opacity $anim-duration $anim-easing;
+
+  &.is-active {
+    opacity: 1;
+  }
+}
+
+// -----------------------------------------------------------
+// フェードイン・アップ（下から上へ）
+// -----------------------------------------------------------
+.u-fade-in-up {
+  opacity: 0;
+  transform: translateY(3rem); // 30px下から
+  transition:
+    opacity $anim-duration $anim-easing,
+    transform $anim-duration $anim-easing;
+
+  &.is-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------------------------------------
+// フェードイン・ダウン（上から下へ）
+// -----------------------------------------------------------
+.u-fade-in-down {
+  opacity: 0;
+  transform: translateY(-3rem); // 30px上から
+  transition:
+    opacity $anim-duration $anim-easing,
+    transform $anim-duration $anim-easing;
+
+  &.is-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------------------------------------
+// フェードイン・レフト（右から左へ）
+// -----------------------------------------------------------
+.u-fade-in-left {
+  opacity: 0;
+  transform: translateX(3rem); // 30px右から
+  transition:
+    opacity $anim-duration $anim-easing,
+    transform $anim-duration $anim-easing;
+
+  &.is-active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// -----------------------------------------------------------
+// フェードイン・ライト（左から右へ）
+// -----------------------------------------------------------
+.u-fade-in-right {
+  opacity: 0;
+  transform: translateX(-3rem); // 30px左から
+  transition:
+    opacity $anim-duration $anim-easing,
+    transform $anim-duration $anim-easing;
+
+  &.is-active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
