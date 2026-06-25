@@ -237,9 +237,10 @@
       width: 2rem;
       aspect-ratio: 1;
       content: "";
-      background-image: url("../images/icon/icon-search.svg");
-      background-size: cover;
-      transition: opacity g.$transition-base-duration g.$transition-base-easing;
+      background-color: g.$color-text-main;
+      mask-image: url("../images/icon/icon-search.svg");
+      mask-size: cover;
+      transition: background-color g.$transition-base-duration g.$transition-base-easing;
 
       @include g.mq(md) {
         width: 2.4rem;
@@ -252,7 +253,7 @@
 
     @include g.hover {
       &::before {
-        opacity: g.$opacity-hover;
+        background-color: g.$color-text-main-light;
       }
     }
   }
@@ -282,15 +283,20 @@
       color g.$transition-base-duration g.$transition-base-easing,
       background-color g.$transition-base-duration g.$transition-base-easing;
 
+    &::before {
+      display: inline-block;
+      width: 2rem;
+      aspect-ratio: 22 / 16;
+      content: "";
+      background-color: currentcolor;
+      mask-image: url("../images/icon/icon-contact.svg");
+      mask-size: cover;
+    }
+
     @include g.hover {
       color: g.$color-main;
       background-color: g.$color-text-white;
       border: 1px solid g.$color-main;
-    }
-
-    svg {
-      width: 2.2rem;
-      fill: currentcolor;
     }
   }
 
@@ -314,16 +320,14 @@
     &::before {
       width: 2rem;
       aspect-ratio: 1;
-      background-image: url("../images/icon/icon-search.svg");
-
-      @include g.mq(md) {
-        width: 2.4rem;
-      }
+      background-color: g.$color-text-main;
+      mask-image: url("../images/icon/icon-search.svg");
+      mask-size: cover;
     }
 
     &.is-open::before {
-      background-image: url("../images/icon/icon-close-black.svg");
-      transform: rotate(45deg);
+      width: 1.6rem;
+      mask-image: url("../images/icon/icon-close.svg");
     }
   }
 
@@ -331,11 +335,9 @@
     &::before {
       width: 2rem;
       aspect-ratio: 2 / 1.4;
-      background-image: url("../images/icon/icon-hamburger.svg");
-
-      @include g.mq(md) {
-        width: 2.4rem;
-      }
+      background-color: g.$color-text-main;
+      mask-image: url("../images/icon/icon-hamburger.svg");
+      mask-size: cover;
     }
   }
 
@@ -395,16 +397,12 @@
     height: 4rem;
 
     &::before {
-      width: 1.4rem;
+      width: 1.6rem;
       aspect-ratio: 1;
       content: "";
-      background-image: url("../images/icon/icon-close-white.svg");
-      background-size: cover;
-      transform: rotate(45deg);
-
-      @include g.mq(md) {
-        width: 1.6rem;
-      }
+      background-color: g.$color-text-white;
+      mask-image: url("../images/icon/icon-close.svg");
+      mask-size: cover;
     }
   }
 

@@ -41,7 +41,6 @@
           </div>
           <div class="l-header__contact-wrapper">
             <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="l-header__contact-link">
-              <?php echo file_get_contents(get_template_directory() . "/assets/images/icon/icon-contact.svg") ?>
               お問い合わせ
             </a>
           </div>
