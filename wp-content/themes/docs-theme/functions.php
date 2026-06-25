@@ -127,6 +127,17 @@ add_action('enqueue_block_editor_assets', function () {
   );
 });
 
+/**
+ * 検索キーワードが未入力（空文字）の場合、トップページへリダイレクト
+ */
+add_action('template_redirect', function () {
+  // 検索ページ（is_search）で、かつ検索クエリが空の場合
+  if (is_search() && empty(get_search_query())) {
+    wp_safe_redirect(home_url('/'));
+    exit;
+  }
+});
+
 // =========================================================================
 // 段落（p）のブロックスタイル登録
 // =========================================================================
