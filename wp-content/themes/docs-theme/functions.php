@@ -138,6 +138,21 @@ add_action('template_redirect', function () {
   }
 });
 
+/**
+ * カスタム投稿タイプ「デモ（demo）」の登録
+ */
+add_action('init', function () {
+  register_post_type('demo', array(
+    'label'         => 'デモページ',
+    'public'        => true,
+    'has_archive'   => false, // デモの一覧ページは不要なのでfalse
+    'menu_position' => 5,     // 管理画面の「投稿」のすぐ下に配置
+    'menu_icon'     => 'dashicons-laptop', // ノートパソコンのアイコン
+    'supports'      => array('title', 'editor', 'custom-fields'),
+    'show_in_rest'  => true,  // ブロックエディタ（Gutenberg）を有効化
+  ));
+});
+
 // =========================================================================
 // 段落（p）のブロックスタイル登録
 // =========================================================================
