@@ -11,9 +11,9 @@
   justify-content: center;
   width: 4.4rem;
   aspect-ratio: 1;
-  color: g.$color-text-white;
+  color: g.$color-main;
   cursor: pointer;
-  background-color: g.$color-main;
+  background-color: g.$color-text-white;
   border-radius: g.$radius-sm;
   box-shadow: g.$box-shadow-card;
 
@@ -34,7 +34,7 @@
       width: 100%;
       aspect-ratio: 1;
       content: "";
-      background-color: g.$color-text-white;
+      background-color: g.$color-main;
       mask-image: url("../images/icon/icon-toc.svg");
       mask-repeat: no-repeat;
       mask-position: center;

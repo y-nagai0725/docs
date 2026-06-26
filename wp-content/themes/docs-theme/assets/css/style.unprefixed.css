@@ -1128,9 +1128,9 @@ img {
   justify-content: center;
   width: 4.4rem;
   aspect-ratio: 1;
-  color: #fff;
+  color: #1bb4d4;
   cursor: pointer;
-  background-color: #1bb4d4;
+  background-color: #fff;
   border-radius: 0.4rem;
   box-shadow: 0 0 0.4rem 0 rgba(0, 0, 0, 0.15);
 }
@@ -1152,7 +1152,7 @@ img {
   width: 100%;
   aspect-ratio: 1;
   content: "";
-  background-color: #fff;
+  background-color: #1bb4d4;
   mask-image: url("../images/icon/icon-toc.svg");
   mask-repeat: no-repeat;
   mask-position: center;
