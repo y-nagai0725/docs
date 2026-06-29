@@ -13,11 +13,15 @@
   <div class="l-wrapper">
     <header class="l-header">
       <div class="l-header__inner">
-        <h1 class="l-header__logo">
+        <?php
+        // トップページなら 'h1'、それ以外は 'div' にする
+        $logo_tag = (is_front_page() || is_home()) ? 'h1' : 'div';
+        ?>
+        <<?php echo $logo_tag; ?> class="l-header__logo">
           <a class="l-header__logo-link" href="<?php echo esc_url(home_url('/')); ?>">
             <img class="l-header__logo-image" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo/site-logo-black.svg" alt="Mikanbako Docs">
           </a>
-        </h1>
+        </<?php echo $logo_tag; ?>>
         <div class="l-header__actions">
           <div class="l-header__category-wrapper">
             <span class="l-header__category-heading">カテゴリー</span>
