@@ -52,13 +52,16 @@ function tech_blog_enqueue_scripts()
   );
 
   // 共通JavaScriptの読み込み
-  wp_enqueue_script(
-    'tech-blog-common',
-    get_template_directory_uri() . '/assets/js/dist/bundle.js',
-    array(),
-    filemtime(get_template_directory() . '/assets/js/dist/bundle.js'),
-    true
-  );
+  // ※デモページ（カスタム投稿タイプ 'demo'）以外の場合のみ読み込む
+  if (! is_singular('demo')) {
+    wp_enqueue_script(
+      'tech-blog-common',
+      get_template_directory_uri() . '/assets/js/dist/bundle.js',
+      array(),
+      filemtime(get_template_directory() . '/assets/js/dist/bundle.js'),
+      true
+    );
+  }
 
   // prism.css
   wp_enqueue_style(
