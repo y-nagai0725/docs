@@ -42,7 +42,7 @@
             </div>
 
             <footer class="p-single__footer">
-              <?php get_template_part('template-parts/article-meta', null, array('type' => 'footer')); ?>
+              <?php get_template_part('template-parts/article-meta'); ?>
             </footer>
 
           </article>

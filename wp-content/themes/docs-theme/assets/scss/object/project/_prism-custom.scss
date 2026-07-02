@@ -13,20 +13,84 @@
 
   // ツールバー（言語名やコピーボタンが入っているラッパー）
   div.code-toolbar > .toolbar {
-    opacity: 1;
+    top: 1.2rem;
+    right: 1.2rem;
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    opacity: 1; // 常に表示させておく
   }
 
   // 言語名のラベル（Show Language）
-  .toolbar-item > span {
-    // 文字色や背景色を調整など
+  div.code-toolbar > .toolbar > .toolbar-item > span {
+    display: block;
+    padding: 0.3rem 1rem;
+    font-size: 1.2rem;
+    font-weight: g.$font-weight-bold;
+    color: g.$color-text-main;
+    background-color: rgb(255 255 255 / 90%); // 少し透け感のある白
+    border-radius: 2rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%); // 軽く影をつけて浮き出させる
   }
 
   // コピーボタン（Copy to Clipboard Button）
-  .toolbar-item > button {
-    // ボタンのホバー時の色や形を調整など
+  div.code-toolbar > .toolbar > .toolbar-item > button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0;
+    font-size: 0; // 「Copy」というテキストを消す
+    color: transparent;
+    cursor: pointer;
+    background-color: rgb(255 255 255 / 90%);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    transition:
+      background-color g.$transition-base-duration g.$transition-base-easing,
+      transform g.$transition-base-duration g.$transition-base-easing;
+
+    // SVGアイコン（クリップボード）を疑似要素で表示
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-block;
+      width: 60%;
+      aspect-ratio: 1;
+      content: "";
+      background-color: g.$color-text-main;
+
+      // クリップボードアイコン
+      mask-image: url("../images/icon/icon-copy.svg");
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      transform: translate(-50%, -50%);
+      transition: background-color g.$transition-base-duration g.$transition-base-easing;
+    }
+
+    // ホバー時のエフェクト
     @include g.hover {
-      color: g.$color-text-white;
       background-color: g.$color-main;
+
+      &::before {
+        background-color: g.$color-text-white; // アイコンを白に反転
+      }
+    }
+  }
+
+  // コピー成功時の状態（Prism.jsが付与する属性を利用）
+  div.code-toolbar > .toolbar > .toolbar-item > button[data-copy-state="copy-success"] {
+    background-color: g.$color-correct;
+
+    &::before {
+      background-color: g.$color-text-white;
+
+      // チェックマークのアイコンに変更
+      mask-image: url("../images/icon/icon-check.svg");
     }
   }
 }

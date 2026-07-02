@@ -131,10 +131,12 @@
   code {
     @include content-target {
       display: inline-block;
-      padding: 0.2em 0.3em;
+      padding: 0.1em 0.3em;
       margin-inline: 0.3em;
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; // prism.cssと同じ指定にする
       color: g.$color-code;
       background-color: g.$color-bg;
+      border-radius: g.$radius-sm;
     }
   }
 
