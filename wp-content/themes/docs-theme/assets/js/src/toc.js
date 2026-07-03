@@ -10,7 +10,6 @@ import { GSAP_DEFAULT } from "./constants";
 
 /**
  * PC用：目次のカレント表示処理
- * @returns
  */
 export const initTocScrollTrigger = () => {
   const tocLinks = document.querySelectorAll('.js-toc-link');
@@ -56,7 +55,6 @@ export const initTocScrollTrigger = () => {
 
 /**
  * SP/Tab用：目次モーダルの開閉アニメーション設定
- * @returns
  */
 export const initTocModal = () => {
   // 目次表示ボタン

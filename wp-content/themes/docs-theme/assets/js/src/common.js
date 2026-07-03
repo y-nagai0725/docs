@@ -1,3 +1,7 @@
+// =========================================================================
+// common.js (全ページ共通のJavaScript)
+// =========================================================================
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -11,9 +15,6 @@ import { initTocScrollTrigger, initTocModal } from "./toc";
 // お問い合わせフォーム用モジュールを読み込み
 import { initContactForm } from "./contact";
 
-/**
- * 全ページ共通のJavaScript
- */
 document.addEventListener("DOMContentLoaded", () => {
   // // GSAPプラグインの登録
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -300,5 +301,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollAnimation();
   };
 
+  // 初期化処理実行
   init();
 });
