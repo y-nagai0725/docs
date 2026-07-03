@@ -10,13 +10,17 @@
   flex-direction: column;
   gap: 4rem;
 
+  // タブレット（768px以上〜1024px未満）の時だけ 2列グリッドにする
   @include g.mq(md) {
-    gap: 4.8rem;
-    max-width: 40rem;
-    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4.8rem 3.2rem;
   }
 
+  // PC表示（1024px以上）になったら、右サイドバー用に縦長1列（flex）に戻す
   @include g.mq(lg) {
+    display: flex;
+    flex-direction: column;
     gap: 6.4rem;
     height: 100%;
   }

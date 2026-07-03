@@ -773,13 +773,15 @@ img {
 }
 @media screen and (width >= 768px) {
   .l-sidebar {
-    gap: 4.8rem;
-    max-width: 40rem;
-    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4.8rem 3.2rem;
   }
 }
 @media screen and (width >= 1024px) {
   .l-sidebar {
+    display: flex;
+    flex-direction: column;
     gap: 6.4rem;
     height: 100%;
   }
@@ -1181,7 +1183,10 @@ img {
 }
 
 .p-profile {
-  background-color: rgba(27, 180, 212, 0.1);
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid rgba(123, 123, 123, 0.3);
+  border-radius: 0.4rem;
 }
 .p-profile__bg {
   position: relative;
@@ -1233,32 +1238,50 @@ img {
 .p-profile__text {
   font-size: 1.3rem;
   line-height: 1.8;
+  text-align: center;
 }
 .p-profile__links {
   display: flex;
-  gap: 1.6rem;
+  flex-wrap: wrap;
+  gap: 1.2rem;
   align-items: center;
   justify-content: center;
 }
 .p-profile__link-button {
   position: relative;
   display: flex;
-  gap: 1rem;
+  gap: 0.6rem;
   align-items: center;
   justify-content: center;
   width: 12rem;
-  padding: 1rem 0;
+  padding: 0.8rem 0;
   font-family: "Roboto", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  border: 1px solid #3e3e3e;
-  border-radius: 0.4rem;
+  color: #3e3e3e;
+  background-color: #f7f7f7;
+  border-radius: 2rem;
   transition: color 0.4s ease-out, background-color 0.4s ease-out;
+}
+.p-profile__link-button::before {
+  width: 1.2em;
+  aspect-ratio: 1;
+  content: "";
+  background-color: currentcolor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+.p-profile__link-button--github::before {
+  mask-image: url("../images/icon/icon-github.svg");
+}
+.p-profile__link-button--portfolio::before {
+  mask-image: url("../images/icon/icon-portfolio.svg");
 }
 @media (any-hover: hover) {
   .p-profile__link-button:hover {
     color: #fff;
-    background-color: #3e3e3e;
+    background-color: #1bb4d4;
   }
 }
 
@@ -1269,6 +1292,7 @@ img {
   font-weight: 700;
   color: #fff;
   background-color: #1bb4d4;
+  border-radius: 0.4rem;
 }
 .p-sidebar-widget__title--category {
   margin-bottom: 0;

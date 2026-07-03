@@ -16,8 +16,8 @@
           最近はGSAPとWordPressを勉強中です。
         </p>
         <div class="p-profile__links">
-          <a href="https://github.com/y-nagai0725" target="_blank" class="p-profile__link-button">GitHub</a>
-          <a href="https://portfolio.mikanbako.jp/" target="_blank" class="p-profile__link-button">Portfolio</a>
+          <a href="https://github.com/y-nagai0725" target="_blank" class="p-profile__link-button p-profile__link-button--github">GitHub</a>
+          <a href="https://portfolio.mikanbako.jp/" target="_blank" class="p-profile__link-button p-profile__link-button--portfolio">Portfolio</a>
         </div>
       </div>
     </div>
