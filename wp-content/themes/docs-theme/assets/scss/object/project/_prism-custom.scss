@@ -8,6 +8,7 @@
 .p-content {
   // Prism.jsのコードブロック全体の調整
   pre[class*="language-"] {
+    padding-top: 5.6rem; // ツールバーの表示領域用に余白を設定
     border-radius: g.$radius-sm;
   }
 

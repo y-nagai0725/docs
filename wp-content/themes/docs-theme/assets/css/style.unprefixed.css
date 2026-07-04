@@ -1788,6 +1788,7 @@ img {
 }
 
 .p-content pre[class*=language-] {
+  padding-top: 5.6rem;
   border-radius: 0.4rem;
 }
 .p-content div.code-toolbar > .toolbar {
