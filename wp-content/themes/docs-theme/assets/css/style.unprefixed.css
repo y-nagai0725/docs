@@ -1540,7 +1540,7 @@ img {
 }
 .p-content code:not([class]), .p-content code[class^=wp-block-], .p-content code[class*=" wp-block-"] {
   display: inline-block;
-  padding: 0.1em 0.3em;
+  padding: 0 0.3em;
   margin-inline: 0.3em;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   color: #c72c4c;
