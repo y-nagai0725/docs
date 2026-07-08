@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GSAP_DEFAULT } from "./constants";
 
 /**
- * PC用：目次のカレント表示処理
+ * PC用・SP用：目次のカレント表示処理
  */
 export const initTocScrollTrigger = () => {
   const tocLinks = document.querySelectorAll('.js-toc-link');
@@ -17,7 +17,8 @@ export const initTocScrollTrigger = () => {
   // 目次がないページ（トップページなど）では、ここで処理を終了する
   if (tocLinks.length === 0) return;
 
-  const headingsData = [];
+  // 同じ見出しIDごとにデータをまとめるために Map を使用する
+  const headingsMap = new Map();
 
   tocLinks.forEach(link => {
     // href属性（#index-1など）を取得する
@@ -29,13 +30,22 @@ export const initTocScrollTrigger = () => {
     if (targetId && targetId !== '#') {
       const heading = document.querySelector(targetId);
       if (heading) {
-        headingsData.push({
-          linkItem: link.parentElement, // リンクの親要素のli要素にクラスの付け替えをする為
-          heading: heading
-        });
+        // まだMapに登録されていない見出しなら、初期化する
+        if (!headingsMap.has(targetId)) {
+          headingsMap.set(targetId, {
+            heading: heading,
+            linkItems: [] // 複数の目次リンクを格納するための配列にする
+          });
+        }
+
+        // 対応する li 要素（link.parentElement）を配列に追加していく
+        headingsMap.get(targetId).linkItems.push(link.parentElement);
       }
     }
   });
+
+  // Mapの値を配列に変換
+  const headingsData = Array.from(headingsMap.values());
 
   headingsData.forEach((data, index) => {
     const nextData = headingsData[index + 1];
@@ -43,12 +53,12 @@ export const initTocScrollTrigger = () => {
     ScrollTrigger.create({
       trigger: data.heading,
       start: "top 20%",
-      endTrigger: nextData ? nextData.heading : "html",
-      end: nextData ? "top 20%" : "bottom top",
+      endTrigger: nextData ? nextData.heading : data.heading,
+      end: nextData ? "top 20%" : "max",
       toggleClass: {
-        targets: data.linkItem,
+        targets: data.linkItems,
         className: "is-active"
-      }
+      },
     });
   });
 };
