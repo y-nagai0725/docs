@@ -1485,7 +1485,7 @@ img {
   margin-bottom: 0;
 }
 .p-content p:not([class]), .p-content p[class^=wp-block-], .p-content p[class*=" wp-block-"] {
-  line-height: 1.8;
+  line-height: 2;
 }
 .p-content a:not([class]), .p-content a[class^=wp-block-], .p-content a[class*=" wp-block-"] {
   color: #1bb4d4;
