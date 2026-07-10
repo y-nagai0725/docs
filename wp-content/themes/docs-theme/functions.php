@@ -277,6 +277,41 @@ function mikanbako_card_shortcode($atts)
 add_shortcode('card', 'mikanbako_card_shortcode');
 
 // =========================================================================
+// ショートコードの登録：デモページリンク
+// =========================================================================
+function mikanbako_demo_shortcode($atts)
+{
+  $atts = shortcode_atts(array(
+    'id' => '',
+  ), $atts, 'demo');
+
+  $post_id = intval($atts['id']);
+
+  if (empty($post_id)) return '';
+
+  $args = array(
+    'p'           => $post_id,
+    'post_type'   => 'demo',
+    'post_status' => 'publish',
+  );
+  $query = new WP_Query($args);
+
+  if ($query->have_posts()) {
+    ob_start();
+    while ($query->have_posts()) {
+      $query->the_post();
+      get_template_part('template-parts/demo-card');
+    }
+    wp_reset_postdata();
+    return ob_get_clean();
+  }
+  return '';
+}
+
+// 'demo' という名前のショートコードを登録
+add_shortcode('demo', 'mikanbako_demo_shortcode');
+
+// =========================================================================
 // 各種機能ファイルの読み込み
 // =========================================================================
 require_once get_template_directory() . '/inc/toc.php';
