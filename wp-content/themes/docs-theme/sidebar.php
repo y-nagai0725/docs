@@ -11,19 +11,46 @@
       <div class="p-profile__bg">
         <img class="p-profile__bg-image" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/sidebar/profile-bg.jpg" alt="札幌の街並み">
         <div class="p-profile__icon">
-          <img class="p-profile__icon-image" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/sidebar/profile-icon.png" alt="みかん箱">
+          <?php
+          // アイコン画像が登録されていればそれを、なければ元の画像を表示
+          $profile_icon = get_theme_mod('profile_icon');
+          if ($profile_icon) :
+          ?>
+            <img class="p-profile__icon-image" src="<?php echo esc_url($profile_icon); ?>" alt="プロフィールアイコン">
+          <?php else : ?>
+            <img class="p-profile__icon-image" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/sidebar/profile-icon.png" alt="みかん箱">
+          <?php endif; ?>
         </div>
       </div>
+
       <div class="p-profile__info">
-        <h2 class="p-profile__name">Author: みかん箱</h2>
-        <p class="p-profile__text">
-          北海道札幌市在住。<br>
-          web制作技術の定着の為、記事としてまとめアウトプットしていきます。<br>
-          最近はGSAPとWordPressを勉強中です。
-        </p>
+        <?php
+        // 名前の出力
+        $profile_name = get_theme_mod('profile_name');
+        $display_name = $profile_name ? $profile_name : 'Author: みかん箱';
+        ?>
+        <h2 class="p-profile__name"><?php echo esc_html($display_name); ?></h2>
+
+        <?php
+        // 紹介文の出力
+        $profile_text = get_theme_mod('profile_text');
+        $default_text = "北海道札幌市在住。\nweb制作技術の定着の為、記事としてまとめアウトプットしていきます。\n最近はGSAPとWordPressを勉強中です。";
+        $display_text = $profile_text ? $profile_text : $default_text;
+        ?>
+        <p class="p-profile__text"><?php echo nl2br(esc_html($display_text)); ?></p>
+
         <div class="p-profile__links">
-          <a href="https://github.com/y-nagai0725" target="_blank" class="p-profile__link-button p-profile__link-button--github">GitHub</a>
-          <a href="https://portfolio.mikanbako.jp/" target="_blank" class="p-profile__link-button p-profile__link-button--portfolio">Portfolio</a>
+          <?php
+          // GitHub URLの出力
+          $profile_github = get_theme_mod('profile_github');
+          $display_github = $profile_github ? $profile_github : 'https://github.com/y-nagai0725';
+
+          // Portfolio URLの出力
+          $profile_portfolio = get_theme_mod('profile_portfolio');
+          $display_portfolio = $profile_portfolio ? $profile_portfolio : 'https://portfolio.mikanbako.jp/';
+          ?>
+          <a href="<?php echo esc_url($display_github); ?>" target="_blank" class="p-profile__link-button p-profile__link-button--github">GitHub</a>
+          <a href="<?php echo esc_url($display_portfolio); ?>" target="_blank" class="p-profile__link-button p-profile__link-button--portfolio">Portfolio</a>
         </div>
       </div>
     </div>

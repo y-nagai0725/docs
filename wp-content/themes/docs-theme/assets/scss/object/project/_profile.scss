@@ -48,7 +48,7 @@
 
   &__icon-image {
     width: 85%;
-    aspect-ratio: 160 / 125;
+    height: auto;
   }
 
   &__info {
@@ -67,7 +67,6 @@
   &__text {
     font-size: 1.3rem;
     line-height: 1.8;
-    text-align: center;
   }
 
   &__links {

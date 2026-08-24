@@ -315,3 +315,67 @@ add_shortcode('demo', 'mikanbako_demo_shortcode');
 // 各種機能ファイルの読み込み
 // =========================================================================
 require_once get_template_directory() . '/inc/toc.php';
+
+// =========================================================================
+// テーマカスタマイザーの設定（プロフィール）
+// =========================================================================
+function mikanbako_customize_register($wp_customize) {
+  // プロフィール設定のセクションを追加
+  $wp_customize->add_section('mikanbako_profile_section', array(
+    'title'    => 'プロフィール設定',
+    'priority' => 30, // メニューの上の方に表示させる
+  ));
+
+  // アイコン画像の項目
+  $wp_customize->add_setting('profile_icon');
+  $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'profile_icon', array(
+    'label'    => 'アイコン画像',
+    'section'  => 'mikanbako_profile_section',
+    'settings' => 'profile_icon',
+  )));
+
+  // 名前の項目
+  $wp_customize->add_setting('profile_name', array(
+    'default' => 'Author: みかん箱',
+  ));
+  $wp_customize->add_control('profile_name', array(
+    'label'    => '名前',
+    'type'     => 'text',
+    'section'  => 'mikanbako_profile_section',
+    'settings' => 'profile_name',
+  ));
+
+  // 紹介文の項目
+  $wp_customize->add_setting('profile_text', array(
+    'default' => "北海道札幌市在住。\nweb制作技術の定着の為、記事としてまとめアウトプットしていきます。\n最近はGSAPとWordPressを勉強中です。",
+  ));
+  $wp_customize->add_control('profile_text', array(
+    'label'    => '紹介文',
+    'type'     => 'textarea',
+    'section'  => 'mikanbako_profile_section',
+    'settings' => 'profile_text',
+  ));
+
+  // GitHub URLの項目
+  $wp_customize->add_setting('profile_github', array(
+    'default' => 'https://github.com/y-nagai0725',
+  ));
+  $wp_customize->add_control('profile_github', array(
+    'label'    => 'GitHub URL',
+    'type'     => 'url',
+    'section'  => 'mikanbako_profile_section',
+    'settings' => 'profile_github',
+  ));
+
+  // Portfolio URLの項目
+  $wp_customize->add_setting('profile_portfolio', array(
+    'default' => 'https://portfolio.mikanbako.jp/',
+  ));
+  $wp_customize->add_control('profile_portfolio', array(
+    'label'    => 'Portfolio URL',
+    'type'     => 'url',
+    'section'  => 'mikanbako_profile_section',
+    'settings' => 'profile_portfolio',
+  ));
+}
+add_action('customize_register', 'mikanbako_customize_register');

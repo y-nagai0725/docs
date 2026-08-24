@@ -1227,7 +1227,7 @@ img {
 }
 .p-profile__icon-image {
   width: 85%;
-  aspect-ratio: 160/125;
+  height: auto;
 }
 .p-profile__info {
   display: flex;
@@ -1243,7 +1243,6 @@ img {
 .p-profile__text {
   font-size: 1.3rem;
   line-height: 1.8;
-  text-align: center;
 }
 .p-profile__links {
   display: flex;
