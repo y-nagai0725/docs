@@ -7,8 +7,8 @@
  * 本文（the_content）の見出し（h2, h3, h4）にIDを付与する
  */
 add_filter('the_content', function ($content) {
-  // 記事ページ以外はそのまま返す
-  if (!is_single()) {
+  // 通常の記事投稿ページ以外はそのまま返す
+  if (!is_singular('post')) {
     return $content;
   }
 
