@@ -1699,6 +1699,7 @@ img {
   display: none;
 }
 .p-content .is-style-list-check li::before {
+  top: 1em;
   width: 1.2rem;
   aspect-ratio: 2;
   border-bottom: 2px solid #1bb4d4;
@@ -1706,6 +1707,7 @@ img {
   transform: translateY(-50%) rotate(-45deg);
 }
 .p-content .is-style-list-dot li::before {
+  top: 1em;
   width: 0.8rem;
   aspect-ratio: 1;
   background-color: #1bb4d4;
@@ -1719,6 +1721,7 @@ img {
   counter-increment: number;
 }
 .p-content .is-style-list-number li::before {
+  top: 1em;
   font-family: "Roboto", sans-serif;
   color: #1bb4d4;
   content: counter(number) ".";

@@ -163,6 +163,7 @@ $box-types: (
 
     li {
       &::before {
+        top: 1em;
         width: 1.2rem;
         aspect-ratio: 2;
         border-bottom: 2px solid g.$color-main;
@@ -178,6 +179,7 @@ $box-types: (
 
     li {
       &::before {
+        top: 1em;
         width: 0.8rem;
         aspect-ratio: 1;
         background-color: g.$color-main;
@@ -197,6 +199,7 @@ $box-types: (
       counter-increment: number;
 
       &::before {
+        top: 1em;
         font-family: g.$font-en;
         color: g.$color-main;
         content: counter(number) ".";
